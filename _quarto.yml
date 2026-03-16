@@ -8,6 +8,8 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: leetcode.qmd
+        text: LeetCode Hot 100
 
 format:
   html:

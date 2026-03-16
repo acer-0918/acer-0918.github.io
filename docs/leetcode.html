@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>LeetCode HOT 100 – My Blog</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-9c584ca951e49926686c986861625e9f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a805d519a519d72066128bb8f160be3d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">My Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./leetcode.html" aria-current="page"> 
+<span class="menu-text">LeetCode Hot 100</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#哈希" id="toc-哈希" class="nav-link active" data-scroll-target="#哈希">哈希</a>
+  <ul class="collapse">
+  <li><a href="#两数之和" id="toc-两数之和" class="nav-link" data-scroll-target="#两数之和">1.两数之和</a></li>
+  <li><a href="#字母异位词分组" id="toc-字母异位词分组" class="nav-link" data-scroll-target="#字母异位词分组">49.字母异位词分组</a></li>
+  <li><a href="#最长连续序列" id="toc-最长连续序列" class="nav-link" data-scroll-target="#最长连续序列">128.最长连续序列</a></li>
+  </ul></li>
+  <li><a href="#双指针" id="toc-双指针" class="nav-link" data-scroll-target="#双指针">双指针</a>
+  <ul class="collapse">
+  <li><a href="#移动零" id="toc-移动零" class="nav-link" data-scroll-target="#移动零">283.移动零</a></li>
+  <li><a href="#盛最多水的容器" id="toc-盛最多水的容器" class="nav-link" data-scroll-target="#盛最多水的容器">11.盛最多水的容器</a></li>
+  <li><a href="#三数之和" id="toc-三数之和" class="nav-link" data-scroll-target="#三数之和">15.三数之和</a></li>
+  <li><a href="#接雨水" id="toc-接雨水" class="nav-link" data-scroll-target="#接雨水">42.接雨水</a></li>
+  </ul></li>
+  <li><a href="#滑动窗口" id="toc-滑动窗口" class="nav-link" data-scroll-target="#滑动窗口">滑动窗口</a>
+  <ul class="collapse">
+  <li><a href="#无重复字符的最长子串" id="toc-无重复字符的最长子串" class="nav-link" data-scroll-target="#无重复字符的最长子串">3.无重复字符的最长子串</a></li>
+  <li><a href="#找到字符串中所有字母异位词" id="toc-找到字符串中所有字母异位词" class="nav-link" data-scroll-target="#找到字符串中所有字母异位词">438.找到字符串中所有字母异位词</a></li>
+  </ul></li>
+  <li><a href="#子串" id="toc-子串" class="nav-link" data-scroll-target="#子串">子串</a>
+  <ul class="collapse">
+  <li><a href="#和为k的子数组" id="toc-和为k的子数组" class="nav-link" data-scroll-target="#和为k的子数组">560.和为k的子数组</a></li>
+  <li><a href="#滑动窗口最大值" id="toc-滑动窗口最大值" class="nav-link" data-scroll-target="#滑动窗口最大值">239.滑动窗口最大值</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">LeetCode HOT 100</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="哈希" class="level1">
+<h1>哈希</h1>
+<section id="两数之和" class="level2">
+<h2 class="anchored" data-anchor-id="两数之和">1.两数之和</h2>
+<p>给你一个数组 nums 和一个目标值 target，要你找到两个数： <span class="math display">\[
+nums[i] + nums[j] = target,\quad i \ne j
+\]</span> 然后返回这两个数的下标。 题目保证：</p>
+<ol type="1">
+<li><p>一定有且只有一个答案</p></li>
+<li><p>不能用同一个元素两次</p></li>
+</ol>
+<p><strong>题解</strong></p>
+<p>因为target是一个给定的值，一个很自然的想法是把所有这样的两数之和都拿出来和target比较，一定可以找到符合的。</p>
+<div id="f8eddb3f" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> twoSum(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>], target: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(nums)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, n):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> nums[i] <span class="op">+</span> nums[j] <span class="op">==</span> target:</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">return</span> [i, j]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>先取nums[0]作为第一个数，再从nums[1]遍历到nums[n-1]作为第二个数；如果没有就把nums[1]作为第一个数，从nums[2]开始遍历……这很自然。</p>
+<p>问题在于循环套循环的耗时太长了。遍历一次单层循环的时间复杂度是O(n)，双层循环就是O(n<sup>2</sup>)了。</p>
+<blockquote class="blockquote">
+<p>我觉得一个很扯淡的事情是人很难靠自己想到还有别的什么操作方法。</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>我们毫无征兆地引入了哈希表。这就是知识锁吧。</p>
+</blockquote>
+<p>需要注意的是，这道题的答案是唯一的。也就是说这么多数字，只有一对是配上的，两个数一一对应，这种关系也只有一对。</p>
+<p>如果当前看到一个数 x，那我想找的另一个数就是 target − x</p>
+<p>所以我们可以一边遍历数组，一边做两件事：</p>
+<ol type="1">
+<li><p>先看 target - nums[i] 之前出现过没有，如果出现过，直接找到答案</p></li>
+<li><p>如果没出现过，就把当前数字和它的下标存起来</p></li>
+</ol>
+<p>这就要用到哈希表（Python 里就是 dict）。</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>哈希表就是键值对的映射表，py中最常见的一种哈希表的实现就是dict。</p>
+<p>我想键值对你已经早就熟悉了。而哈希的强大其实也并不陌生，你在使用dict的时候好像从来没关注过查询某个键的速度问题。也就是说哈希表查询键值对的时间复杂度是O(1)，你已经用行动确信了这一点。</p>
+<p>具体而言，哈希表将输入的键通过某种方式计算得到一个位置编号，这个过程就是哈希。也正是因为这个操作相当有效，我们才无中生有的捏一个新的数据容器出来，也就是用空间换时间。</p>
+</div>
+</div>
+</div>
+<p>简而言之，枚举太慢，而我们刚好有一个工具能够使查询变得特别快，刚好这个题也可以转换成查询来做。</p>
+<p>所以我们代码的重点就是要实现边遍历边判断同时还得存，以及只遍历一次，不用多跑了。</p>
+<div id="59d132d7" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> twoSum(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>], target: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        seen <span class="op">=</span> {}</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i, x <span class="kw">in</span> <span class="bu">enumerate</span>(nums):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            need <span class="op">=</span> target <span class="op">-</span> x</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> need <span class="kw">in</span> seen:</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> [seen[need], i]</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            seen[x] <span class="op">=</span> i</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>需要注意的几个细节：</p>
+<ol type="1">
+<li><p>对seen这个字典，键是遍历到的数，值是下标（毕竟你最后要求返回的是下标对）。need里存满了单身哥布林。</p></li>
+<li><p>enumerate的作用是把一个可迭代对象转换为枚举对象，返回一个元组迭代器，每个元素是(index,value)这样的对。</p></li>
+<li><p><code>if need in seen</code>是在字典里检索键。</p></li>
+</ol>
+<p>这样下来，时间复杂度是O(n)。空间复杂度也是O(n)。</p>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<ol type="1">
+<li><p>dict 可以做“值 -&gt; 下标”的映射。而且dict真的很快，<strong>查</strong>很快<code>key in d</code>，<strong>取</strong>很快<code>d[key]</code>，<strong>存</strong>很快<code>d[key] = value</code>，都是O(1)</p></li>
+<li><p>遍历数组时，可以边遍历边查找</p></li>
+<li><p>“找补数”是经典思路</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="字母异位词分组" class="level2">
+<h2 class="anchored" data-anchor-id="字母异位词分组">49.字母异位词分组</h2>
+<blockquote class="blockquote">
+<p>何异位？</p>
+</blockquote>
+<p>给你一个字符串数组 strs，把那些“字母一样、只是顺序不同”的字符串分到同一组里。</p>
+<p>比如：</p>
+<ul>
+<li>“eat”, “tea”, “ate” 是一组</li>
+<li>“tan”, “nat” 是一组</li>
+<li>“bat” 自己一组</li>
+</ul>
+<p>换句话说，字母异位词的意思是：</p>
+<ul>
+<li>两个字符串长度相同</li>
+<li>每个字母出现次数也相同</li>
+<li>只是排列顺序不同</li>
+</ul>
+<p><strong>题解</strong></p>
+<p>如果已经知道用dict做的话，我的第一反应是把字符串的性质转换为编码作为键，遍历一次，遍历到一个字符串的时候如果这个特殊编码的键没有在dict里面出现过，就新建一个键值对，出现过就往value里面append，最后把这个dict的values全输出来就好了。至于编码，<del>能是26位二进制吗</del>能是26个质数的乘积吗，出现次数就是幂次？但这样运算压力不知道会不会太大。</p>
+<p>好像完全可以使用纯字符串的方式来做啊。一种方式是直接重排字母<del>序顺不影响读阅</del>，把”abandon”排成”aabdnno”；还有一种是计数，写成”a2b1d1n2o1”。似乎完全取决于我们有什么处理字符串的工具。止步于此了。</p>
+<div id="0e7624ee" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> groupAnagrams(<span class="va">self</span>, strs: <span class="bu">list</span>[<span class="bu">str</span>]) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">str</span>]]:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        groups <span class="op">=</span> defaultdict(<span class="bu">list</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> s <span class="kw">in</span> strs:</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            key <span class="op">=</span> <span class="st">''</span>.join(<span class="bu">sorted</span>(s))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>            groups[key].append(s)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">list</span>(groups.values())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>我知道！<code>defaultdict(list)</code>默认是空列表，上来直接append就好，不用再判断key在不在dict里面了。</p>
+<p>主要是我忘记了还有<code>''.join(sorted(s))</code>这种东西，sorted返回的是升序字符列表，所以还得join回去。</p>
+<p>至于<code>list(groups.values())</code>就是前面提到的输出所有values。</p>
+<p>在字符串长度为k时，sorted的时间复杂度为O(k log k)，log k是比较次数。而遍历需要O(n)，所以总的时间复杂度为O(nk log k)。空间复杂度是O(nk)。</p>
+<p>字母计数也是可以做的。其实我们不需要显式写出字母，只要约定好26个位置就可以了。那么是一个列表？不全对。</p>
+<div id="2fc44f44" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> groupAnagrams(<span class="va">self</span>, strs: <span class="bu">list</span>[<span class="bu">str</span>]) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">str</span>]]:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        groups <span class="op">=</span> defaultdict(<span class="bu">list</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> s <span class="kw">in</span> strs:</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>            count <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> <span class="dv">26</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> ch <span class="kw">in</span> s:</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                count[<span class="bu">ord</span>(ch) <span class="op">-</span> <span class="bu">ord</span>(<span class="st">'a'</span>)] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            groups[<span class="bu">tuple</span>(count)].append(s)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">list</span>(groups.values())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>注意啊，虽然这里是两层循环，但一次是n一次是k，总的时间复杂度是O(nk)，还比排序法快一点（特别是字符串长度比较长的时候优势更明显）。空间复杂度还是O(nk)。</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>关键的点在于<code>groups[tuple(count)]</code>，列表只有元组化了之后才能作为键，是因为列表是不可哈希的，列表的内容可以修改。</p>
+<p>字典键必须是可哈希对象。由于哈希的过程是针对内容赋值，如果<code>{[1, 2, 3] : a}</code>是一个键值对，那当<code>[1, 2, 3]</code>由于某些原因更改为<code>[1, 2, 3, 4]</code>时，它的哈希值该变化吗？如果变化了，那根据新的哈希值可能找不到你的value=a，字典失效了；如果不变，那么两个内容不同的东西居然有了相同的哈希值，也是不应该的。</p>
+<p>list set dict都是不可哈希的。int str是可哈希的，tuple一般也可哈希，但如果里面包含了不可哈希对象，那么也不可哈希了。</p>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>我要哈气了。</p>
+</blockquote>
+<p>另外也不要忘记count = [0] * 26这种用法。</p>
+</section>
+<section id="最长连续序列" class="level2">
+<h2 class="anchored" data-anchor-id="最长连续序列">128.最长连续序列</h2>
+<p>给你一个无序数组 nums，找出其中最长的“连续整数序列”的长度。</p>
+<p>注意：</p>
+<ul>
+<li>这里说的连续，是指数值连续，比如 1,2,3,4</li>
+<li>不要求它们在原数组里的位置连续</li>
+<li>数组是无序的</li>
+<li>要求时间复杂度 O(n)</li>
+</ul>
+<p>例如：<code>nums = [100,4,200,1,3,2]</code></p>
+<p>虽然原数组乱序，但其中有连续段<code>1,2,3,4</code>,所以答案是 4。</p>
+<p><strong>题解</strong></p>
+<p>根据我们上一题学到的sorted相关知识，马上发现先排序的时间复杂度已经有O(n log n)了，后面干什么也救不回来了，所以肯定不行。</p>
+<p>根据两数之和那道题的想法，寻找和遍历到的数相邻的数应该是不对的，可能需要通过遍历到的数本身的相邻性质来分堆？例如，假设遍历到了数a：</p>
+<ul>
+<li>a本身在任一堆里：不写入。否则：
+<ul>
+<li>a+1或a-1都不在任一堆里，将a写入任一堆。</li>
+<li>a+1和a-1中只有一个出现在了某一堆里，把a写进那一堆。</li>
+<li>a+1和a-1都出现了，当然在不同堆，就把这两堆写到一起，再把a写进去。</li>
+</ul></li>
+</ul>
+<p>这样就可以在只遍历一次的情形下进行相邻数的聚类了。最后再统计一下各堆数量，得出最多的那一个。不过我并不知道上面的想法如何实现，也不知道时间复杂度，最重要的是好像在这套想法里看不到键在哪里（笑</p>
+<p>我一直尝试想从信息的角度分析一个问题的实现和时间复杂度之间的关系。题目要求O(n)，说明排序的信息有的是冗余的，对我们解答这道题的要求没有益处。特别的，这些题要求得到的东西中信息也是有限的，例如只需要得出最长连续序列的长度，而不是序列本身。我不知道这种想法是不是正确的或者有意义的。</p>
+<p>让我们看看答案。</p>
+<div id="e1e9c2f8" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> longestConsecutive(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        num_set <span class="op">=</span> <span class="bu">set</span>(nums)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        longest <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> x <span class="kw">in</span> num_set:</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> x <span class="op">-</span> <span class="dv">1</span> <span class="kw">not</span> <span class="kw">in</span> num_set:   <span class="co"># x 是连续段起点</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                cur <span class="op">=</span> x</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                length <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                <span class="cf">while</span> cur <span class="op">+</span> <span class="dv">1</span> <span class="kw">in</span> num_set:</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                    cur <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                    length <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                longest <span class="op">=</span> <span class="bu">max</span>(longest, length)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> longest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>先把列表转换为集合来去重。这个题最大的不同是，两数之和的问题需要返回下标，依赖遍历的历史，同时是有序的；而这个问题只需要判断符合要求的数在不在就可以了，很适合无序的集合。而且in set这样的查询是O(1)的。</p>
+<p>题解的标志性思路是通过查询x-1在不在set内来判断x是不是一个连续序列的开头。更进一步的是题解相信得到了这个信息可以支撑它往后延伸查询出整个序列，并且不违反时间复杂度限制。</p>
+<p>注意，我们不是在对一个数组下标进行延伸，我们是在对值本身进行x+1, x+2, x+3…的递增尝试，每一次尝试我们都使用in set查询一次，查询成功长度自加，查询失败则更新最大长度。</p>
+<p>而在时间复杂度上，因为对一个（去重了的）元素而言，仅有两种情况：</p>
+<ul>
+<li>是连续序列开头。那么它会在for循环中被访问一次，不在while循环中被访问；</li>
+<li>不是开头。除了for循环那一次，还在它的序列的开头元素引发的while循环中被访问一次。但也仅此而已了，一个开头只会导致它的序列中的后续元素被访问一次，而一个后续元素也只对应一个开头。</li>
+</ul>
+<p>所以总访问次数必定不超过2n，所以是O(n)的时间复杂度。（注意啊不是说非得只能访问n次，O(n)不是n啊）</p>
+<p>我觉得题解的关键就是无序查询的便利性以及开头元素和后续元素的一次性对应。</p>
+<p>除了向右延伸的解法以外，还真有一种两边延伸的解法。关键在于，并不需要像我们最开始想的维护堆元素本身，而可以直接去维护长度（准确来说是维护边界元素及其序列长度）。</p>
+<div id="317c3105" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> longestConsecutive(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        length <span class="op">=</span> {}</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        ans <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> x <span class="kw">in</span> nums:</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> x <span class="kw">in</span> length:</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>            left <span class="op">=</span> length.get(x <span class="op">-</span> <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>            right <span class="op">=</span> length.get(x <span class="op">+</span> <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            cur <span class="op">=</span> left <span class="op">+</span> <span class="dv">1</span> <span class="op">+</span> right</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>            length[x] <span class="op">=</span> cur</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>            length[x <span class="op">-</span> left] <span class="op">=</span> cur</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>            length[x <span class="op">+</span> right] <span class="op">=</span> cur</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>            ans <span class="op">=</span> <span class="bu">max</span>(ans, cur)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ans</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>边界长度哈希解法。先按下不表。另外注意这段代码中的get用法：</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><code>.get(key, default)​</code>是字典的一个安全查询方法。</p>
+<p>default：可选参数，当键不存在时返回的值，默认为None。</p>
+<p>这样就可以避免报错了。</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="双指针" class="level1">
+<h1>双指针</h1>
+<section id="移动零" class="level2">
+<h2 class="anchored" data-anchor-id="移动零">283.移动零</h2>
+<p>给你一个数组 nums，要求你：</p>
+<ul>
+<li>把所有 0 移到数组最后面</li>
+<li>非零元素的相对顺序不能变</li>
+<li>必须 原地修改</li>
+<li>不能新开一个同样大小的数组来复制</li>
+</ul>
+<p><strong>题解</strong></p>
+<p>因为不能复制，所以只能对原数组进行原地操作。一个自然的想法是沿着下标遍历，如果元素不是0就继续，如果是0，把这个元素删除的同时，给list append一个0。考虑到可能会出现<code>nums[2]=0, nums[3]=0</code>这种连续0的情况，如果直接删除，依然会有<code>nums[3]</code>往前补一位成为<code>nums[2]</code>。那么这个遍历指针在删除元素的同时还得回退？或者说能不能继续往后检查连续0的情形，然后把这些连续0一次性放到后面？</p>
+<p>这个想法本身确实没啥问题，删除的同时确实也要回退。但是时间复杂度比较高，每删一次后面的元素都要搬一次。</p>
+<blockquote class="blockquote">
+<p>那种好像已经没有别的操作了的感觉又来了。</p>
+</blockquote>
+<p>看了答案之后我发现一个思维定势是，我们会觉得仿佛数组的下标和值是绑死的，就好像一个小朋友有自己的一把椅子。小学时候换座位，大家最讨厌换完了发现自己的椅子被别人拿走了，坐上了很陌生的椅子，很不情愿。但从老师的视角看，才不会管你们谁坐了谁原来的椅子，总的座位换完就好了。</p>
+<p>在前面的那个自然的想法里，我们只会使用pop和append两种方法，而删除后的补位就好像小朋友抱着自己的椅子往前挪了一格。我们需要学会，直接将值指派到某个位置，同时不必担心一个位置上新数覆写旧数丢失信息。特别是，如果一个数是0，它会到最后面去，那么一个非0数直接坐到它原来的位置上是不会有问题的。</p>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>值并不是属于它原来的下标。下标只是存储位置，不是元素的永久座位。</p>
+<p>在很多原地数组题里，数组不是“需要保护原样的对象”，而是“可以被重写的工作区”。</p>
+<p>不要把“当前位置已有值”理解成障碍，而要问“这个位置最终应该放什么”。</p>
+</div>
+</div>
+</div>
+<p>我们可以想象有一个位置 k，表示：</p>
+<p><strong>下一个非零元素应该放到哪里</strong></p>
+<p>然后从左到右扫描数组：</p>
+<ul>
+<li>如果当前数不是 0，就把它放到 k</li>
+<li>然后 k += 1</li>
+</ul>
+<p>扫描完以后：</p>
+<ul>
+<li>前 k 个位置已经是按顺序排好的非零元素</li>
+<li>后面全部填 0</li>
+</ul>
+<div id="f402421c" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> moveZeroes(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        k <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> x <span class="kw">in</span> nums:</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> x <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                nums[k] <span class="op">=</span> x</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                k <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(k, <span class="bu">len</span>(nums)):</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>            nums[i] <span class="op">=</span> <span class="dv">0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>与其说是移动0，不如说是移动非0。而k则是从0开始点出了总共有多少个非0数，让它们从头开始坐。尾部剩下的都用0填满即可。</p>
+<p>它的时间复杂度是O(n)，空间复杂度是O(1)（因为是原地嘛）。</p>
+<p>不过，双指针还没出场呢。</p>
+<p>上面这个方法有一个小问题是，如果前面从来都没有过0，那么这些非0数就不需要挪动位置啊，这些重新赋值的操作对它们而言是无意义的。例如<code>nums=[1,2,3,0,4]</code>，前三个数不用动，不需要再<code>nums[2]=3</code>了。就好像你让本来就不用换位置的小朋友先站起来再坐下一样。</p>
+<p>既然这样，我们就额外维护一个指针，它指向下一个非零元素应该放的位置。在遍历到非0元素时，如果它和遍历指针指向同一个位置，那就啥也不干（已经排对了）。如果指向不同，就<strong>交换</strong>这两个元素。</p>
+<div id="b373bbaa" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> moveZeroes(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(nums)):</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> nums[j] <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> i <span class="op">!=</span> j:</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                    nums[i], nums[j] <span class="op">=</span> nums[j], nums[i]</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                i <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>这样：</p>
+<ul>
+<li>前面 [0, i-1] 始终是已经整理好的非零区</li>
+<li>[i, j] 是待处理区域</li>
+</ul>
+<p>自然地把所有0挤到最后。</p>
+<p>它的时间复杂度是O(n)，空间复杂度是O(1)。虽然复杂度没有变化，但双指针交换法比覆写补0法操作更少。</p>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>这题是一个非常标准的数组压缩问题：</p>
+<p><strong>用一个指针维护“有效区间的末尾”，用另一个指针扫描原数组</strong></p>
+<p>你以后会在很多题里看到类似模式：</p>
+<ul>
+<li>删除指定元素</li>
+<li>删除重复项</li>
+<li>压缩数组</li>
+<li>按条件把某类元素移到前面</li>
+</ul>
+<p>这类题经常都是：</p>
+<ul>
+<li>一个慢指针负责“放结果”</li>
+<li>一个快指针负责“找元素”</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="盛最多水的容器" class="level2">
+<h2 class="anchored" data-anchor-id="盛最多水的容器">11.盛最多水的容器</h2>
+<p>给你一个数组 height。</p>
+<p>第 i 根竖线在位置 i，高度是 <code>height[i]</code>。 任选两根线，和 x 轴围成一个容器，问最多能装多少水。</p>
+<p>如果选两根线，左边下标 l，右边下标 r。</p>
+<p>那么宽度是 r - l，高度取决于较短的那根线，因为水会从短板那里漏掉。</p>
+<p>所以面积公式是：</p>
+<p><span class="math display">\[
+\text{area} = (r-l)\cdot \min(height[l], height[r])
+\]</span></p>
+<p>这题本质就是在很多对 (l, r) 中找最大值。</p>
+<p><strong>题解</strong></p>
+<p>首先暴力枚举肯定是可以的，<span class="math inline">\(C_n^2\)</span>，复杂度是O(n<sup>2</sup>)。</p>
+<p>其次，面积并没有很强的序列性，这应该不是一个纯单向遍历的问题？只是对于最大面积而言，是否存在一些最优性质可以在演进的时候快速判断是否是往更大的方向演进？我只知道假设一条边固定，另一条边逐渐远离，如果二者的最小值增大了，面积肯定是扩张的，但如果减小了，不一定面积就会缩小。怎么有点局部最优的意味了（）感觉又走远了。</p>
+<p>其实这题贪心的思路并不是局部最优导向全局最优，而是反过来进行剪枝。</p>
+<p>试想两条线取最左和最右。现在尝试移动边界，宽度一定更小了，换取的是可能找到更长的最小边的机会。</p>
+<p>对于不等长的两条边界，应当如何移动呢？移动长的那条边，对增大预期面积没有帮助。应当只移动短的那条边，还有增大面积的机会。</p>
+<div id="dc0f76b5" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> maxArea(<span class="va">self</span>, height: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        l, r <span class="op">=</span> <span class="dv">0</span>, <span class="bu">len</span>(height) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        ans <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> l <span class="op">&lt;</span> r:</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>            area <span class="op">=</span> (r <span class="op">-</span> l) <span class="op">*</span> <span class="bu">min</span>(height[l], height[r])</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>            ans <span class="op">=</span> <span class="bu">max</span>(ans, area)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> height[l] <span class="op">&lt;</span> height[r]:</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                l <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                r <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ans</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<blockquote class="blockquote">
+<p>卧槽。怎么这么简单的。</p>
+</blockquote>
+<p>时间复杂度是O(n)，空间复杂度是O(1)。</p>
+</section>
+<section id="三数之和" class="level2">
+<h2 class="anchored" data-anchor-id="三数之和">15.三数之和</h2>
+<p>给你数组 nums，找出所有不重复的三元组：</p>
+<p><span class="math display">\[
+nums[i] + nums[j] + nums[k] = 0
+\]</span></p>
+<p>要求：</p>
+<ul>
+<li>三个下标互不相同</li>
+<li>返回所有<strong>不重复</strong>的三元组。这里指的是值的组合不能重复。</li>
+<li>三元组内部顺序无所谓，输出顺序也无所谓</li>
+</ul>
+<p><strong>题解</strong></p>
+<p>暴力<span class="math inline">\(C_n^3\)</span>吗，有点意思。</p>
+<p>虽然三数之和和两数之和很像，但我感觉没什么可以借鉴的。毕竟两数之和保证这样的数对唯一，但这里的三元组可以有很多个；就算我们先第一次遍历把每个数作为-target一次，寻找其余两个数也不太像两数之和。</p>
+<p>嗯……a+b=-c的思路好像确实是对的。但对两数之和的借鉴就到此为止了。实际上，在固定了c去寻找a和b的过程中，有一个实现难度是被我们忽视的，那就是三元组的值的组合不能重复。在我们按下标遍历时，会出现两个不同下标元素值相同的情况，容易得到重复结果。去重才是这道题最难的地方。</p>
+<div id="d102217c" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> threeSum(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]]:</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        nums.sort()</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        ans <span class="op">=</span> []</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(nums)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n <span class="op">-</span> <span class="dv">2</span>):</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> nums[i] <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> i <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> nums[i] <span class="op">==</span> nums[i <span class="op">-</span> <span class="dv">1</span>]:</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>            l, r <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span>, n <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> l <span class="op">&lt;</span> r:</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>                s <span class="op">=</span> nums[i] <span class="op">+</span> nums[l] <span class="op">+</span> nums[r]</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> s <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>                    l <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>                <span class="cf">elif</span> s <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>                    r <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>                    ans.append([nums[i], nums[l], nums[r]])</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>                    l <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>                    r <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">while</span> l <span class="op">&lt;</span> r <span class="kw">and</span> nums[l] <span class="op">==</span> nums[l <span class="op">-</span> <span class="dv">1</span>]:</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>                        l <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">while</span> l <span class="op">&lt;</span> r <span class="kw">and</span> nums[r] <span class="op">==</span> nums[r <span class="op">+</span> <span class="dv">1</span>]:</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>                        r <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ans</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>sort起手会引起我们的警觉，排序并不是一个很快的操作，但在这里有两个必要性。</p>
+<p>一是排序带来的单调性信息有助于我们使用双指针（但这么想有点事先知道要用双指针做的意思）。双指针似乎需要值的一些性质来指示指针该在什么条件下动。移动零的问题中，元素是否为0指示了“下一个非零数放在哪里”的指针要不要移动；盛最多水的问题里，双指针值的相对大小指示了左右指针谁该移动。</p>
+<p>排序后数组从小到大。这样当你固定 i 后，在 [i+1, n-1] 里找两数和，就有了单调性：</p>
+<ul>
+<li>和太小，就左指针右移，左指针元素会增大</li>
+<li>和太大，就右指针左移，右指针元素会减小</li>
+<li>和刚好，在记录的同时双指针都要移动，同时要注意去重</li>
+</ul>
+<p>（为什么我感觉实际上有i,r,l三个指针呢？确实如此，一层枚举，一层双指针，但关键的优化在这层双指针，所以就这么叫了。）</p>
+<p>二是，排序会自然地让相等元素挨在一起，有利于我们去重。</p>
+<p>我们详细地回顾去重流程。</p>
+<p>一方面，在枚举<code>nums[i]</code>时，如果它和<code>nums[i-1]</code>一样，得到的三元组也一样，所以直接跳过。</p>
+<p>另一方面，对于和刚好的情况，不能仅仅左右都只移动1格了事。如果移动到了相等的数，就继续移动，实现跳过的效果。</p>
+<p>同时还有一个小细节。</p>
+<div id="871a04ac" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> nums[i] <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>这是因为如果<code>nums[i]</code>是正数，它后面的所有数都不小于它，也是正数，三个正数和不可能是0。这是排序带来的额外剪枝。</p>
+<p>排序的时间复杂度是O(n log n)，i的遍历是O(n)，每个i下双指针是O(n)，所以总体是O(n<sup>2</sup>)。空间复杂度是O(1)。</p>
+</section>
+<section id="接雨水" class="level2">
+<h2 class="anchored" data-anchor-id="接雨水">42.接雨水</h2>
+<p>给你一个数组 height，每个数表示一根柱子的高度。</p>
+<p>下雨后，低的地方会积水，求总共能接多少水。</p>
+<p>例如对于<code>height = [0,1,0,2,1,0,1,3,2,1,2,1]</code>，图示如下。</p>
+<div id="d760d27e" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="leetcode_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>题解</strong></p>
+<p>我想了很久。我觉得需要去确定每个盛水区域的边界，池子的两条边限制了池子的面积。假定左边右边下标为l和r，那么池子的面积（盛水量）应当表示成</p>
+<p><span class="math display">\[
+\text{water} = (r-l-1)\cdot \min(height[l], height[r]) - \sum_{i=l+1}^{r-1} height[i]
+\]</span></p>
+<p>注意到我们这里把两个相邻的边界也认为可以盛水，只是面积为0；前提是它们被认为是一个水池的边界。</p>
+<p>关于边界的定义我认为要从两方面出发。一方面是直观地看，最高的柱一定是边界；同时其他的池子边界应该也是相对上比较高的值，例如从最搞柱长6开始往右看，如果为<code>6,2,3,1,4,...</code>，3因为只是局部最高值，没能比4高，所以3一定不是边界。但与此同时我们也不能断言4就是边界了，可能往后看还能有一个5。于是我们得出了另一方面的判断，水池的边界选择一定也和数组边缘的元素相关，特别是我们需要找到第一个水池的左边界和最后一个水池的右边界，才能结合全局最高值推出其他边界。</p>
+<p>由于数组的左右两端被截断了，不能形成水池的壁，所以第一个水池的形成需要边界成为局部最大值。</p>
+<p>这个形成过程是左右对称的。假设全局最大值在k处。如果这个k不唯一，则所有这样的ki之间都能形成水池，所以等效于只有一个k的情况。</p>
+<p>指针i从0开始往右遍历，第一个使得<code>height[i+1] &lt; height[i]</code>的i就是第一个水池的左边界。记为i0。</p>
+<p>指针继续遍历，记录下<code>i1,i2,i3...</code>，使得<code>height[i_{n-1}] &lt;= height[i_n]</code>，直至记录到k。换言之，是“从左往右，第一次下坡开始后，所有刷新了当前边界高度的点”。</p>
+<p>指针j从n-1开始往左遍历，和i的情形一致，第一个使得<code>height[j-1] &lt; height[j]</code>的j就是最后一个水池的右边界。记为j0。继续遍历j，记录那些更新了最大值的j，直至记录到k。</p>
+<p>这样我们就得到了所有的边界，然后将相邻两个代入求面积再相加即可。</p>
+<p>问题是我们并不清楚这样的时间复杂度。首先我们要判断全局最大值，然后ij从两边往中间遍历一次，面积求和过程总共再遍历一次。应该也是O(n)。不过这样的下标操作还是有些繁琐了，在编写实际代码层面很可能出错或者没有妥善处理极端情况。</p>
+<p>g老师给我写了一个。我这个想法好像真没错，虽然不是标准解。空间复杂度也是O(n)。就是代码复杂度，有点高。</p>
+<div id="3c5d193d" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> trap(<span class="va">self</span>, height: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(height)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">3</span>:</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 第一个可能形成水池的左边界：第一次下坡的位置</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        i0 <span class="op">=</span> <span class="bu">next</span>((i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n <span class="op">-</span> <span class="dv">1</span>) <span class="cf">if</span> height[i] <span class="op">&gt;</span> height[i <span class="op">+</span> <span class="dv">1</span>]), <span class="va">None</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i0 <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 最后一个可能形成水池的右边界：从右看第一次下坡的位置</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        j0 <span class="op">=</span> <span class="bu">next</span>((j <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n <span class="op">-</span> <span class="dv">1</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>) <span class="cf">if</span> height[j] <span class="op">&gt;</span> height[j <span class="op">-</span> <span class="dv">1</span>]), <span class="va">None</span>)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> j0 <span class="kw">is</span> <span class="va">None</span> <span class="kw">or</span> i0 <span class="op">&gt;=</span> j0:</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 选左侧第一个全局最大值，避免多最大值时定义含糊</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>        max_h <span class="op">=</span> <span class="bu">max</span>(height)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>        k <span class="op">=</span> height.index(max_h)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 从左往 k 扫，记录新的“前缀最大边界”</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>        left_bounds <span class="op">=</span> []</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i0 <span class="op">&lt;=</span> k:</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>            left_bounds.append(i0)</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>            last <span class="op">=</span> i0</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(i0 <span class="op">+</span> <span class="dv">1</span>, k <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> height[i] <span class="op">&gt;=</span> height[last]:</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>                    left_bounds.append(i)</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>                    last <span class="op">=</span> i</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 从右往 k 扫，记录新的“后缀最大边界”</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>        right_bounds <span class="op">=</span> []</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> j0 <span class="op">&gt;=</span> k:</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>            right_bounds.append(j0)</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>            last <span class="op">=</span> j0</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(j0 <span class="op">-</span> <span class="dv">1</span>, k <span class="op">-</span> <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> height[j] <span class="op">&gt;=</span> height[last]:</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>                    right_bounds.append(j)</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>                    last <span class="op">=</span> j</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 合并左右边界链，得到从左到右的完整边界序列</span></span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>        bounds <span class="op">=</span> left_bounds[:]</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">reversed</span>(right_bounds):</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span> bounds <span class="kw">or</span> bounds[<span class="op">-</span><span class="dv">1</span>] <span class="op">!=</span> idx:</span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>                bounds.append(idx)</span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 前缀和：方便 O(1) 求中间柱子面积</span></span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>        pref <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> (n <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i, h <span class="kw">in</span> <span class="bu">enumerate</span>(height):</span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>            pref[i <span class="op">+</span> <span class="dv">1</span>] <span class="op">=</span> pref[i] <span class="op">+</span> h</span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 对每一对相邻边界套你的面积公式</span></span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>        ans <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> l, r <span class="kw">in</span> <span class="bu">zip</span>(bounds, bounds[<span class="dv">1</span>:]):</span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>            water_rect <span class="op">=</span> (r <span class="op">-</span> l <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> <span class="bu">min</span>(height[l], height[r])</span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>            solid_area <span class="op">=</span> pref[r] <span class="op">-</span> pref[l <span class="op">+</span> <span class="dv">1</span>]</span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>            ans <span class="op">+=</span> water_rect <span class="op">-</span> solid_area</span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ans</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<blockquote class="blockquote">
+<p>显然这不是我自己能正确写出来的代码。但这个长度吧很像我自己努力水出来的代码。</p>
+</blockquote>
+<p>接下来我们来挨个学习主流解法。</p>
+<p>对于某个位置i，它上面能不能存水是由它左右两边的最高柱子决定的。因为水需要两边都有挡板。</p>
+<ul>
+<li><code>left_max[i]</code> 是i左边到i自己这一段的最高柱子</li>
+<li><code>right_max[i]</code>是i右边到i自己这一段的最高柱子</li>
+</ul>
+<p>那么位置i的接水量是</p>
+<p><span class="math display">\[
+\min(left\_max[i], right\_max[i]) - height[i]
+\]</span></p>
+<div id="268800fe" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> trap(<span class="va">self</span>, height: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(height)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        left_max <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> n</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        right_max <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> n</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        left_max[<span class="dv">0</span>] <span class="op">=</span> height[<span class="dv">0</span>]</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n):</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>            left_max[i] <span class="op">=</span> <span class="bu">max</span>(left_max[i <span class="op">-</span> <span class="dv">1</span>], height[i])</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        right_max[n <span class="op">-</span> <span class="dv">1</span>] <span class="op">=</span> height[n <span class="op">-</span> <span class="dv">1</span>]</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n <span class="op">-</span> <span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>            right_max[i] <span class="op">=</span> <span class="bu">max</span>(right_max[i <span class="op">+</span> <span class="dv">1</span>], height[i])</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        ans <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>            ans <span class="op">+=</span> <span class="bu">min</span>(left_max[i], right_max[i]) <span class="op">-</span> height[i]</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ans</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>注意这里左右侧最大值都是可以开数组预处理的。时间复杂度和空间复杂度都是O(n)。</p>
+<p>更进一步地，既然每个位置只需要左右两边的最大值，那我们可以不把整个数组都存下来，而是在双指针移动过程中维护它们。</p>
+<p>设l在左边，r在右边，</p>
+<ul>
+<li><code>left_max</code> 表示当前从左到右见过的最高柱子</li>
+<li><code>right_max</code> 表示当前从右到左见过的最高柱子</li>
+</ul>
+<p>当前该算哪一边的水量？谁那边的最大挡板更小，就先算谁，因为某位置的水量取决于左右挡板的较小值。</p>
+<div id="08caab13" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> trap(<span class="va">self</span>, height: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        l, r <span class="op">=</span> <span class="dv">0</span>, <span class="bu">len</span>(height) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        left_max <span class="op">=</span> right_max <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        ans <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> l <span class="op">&lt;</span> r:</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> height[l] <span class="op">&lt;</span> height[r]:</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> height[l] <span class="op">&gt;=</span> left_max:</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>                    left_max <span class="op">=</span> height[l]</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>                    ans <span class="op">+=</span> left_max <span class="op">-</span> height[l]</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>                l <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> height[r] <span class="op">&gt;=</span> right_max:</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>                    right_max <span class="op">=</span> height[r]</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>                    ans <span class="op">+=</span> right_max <span class="op">-</span> height[r]</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>                r <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ans</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>以及还有一种查找边界的“单调栈”法。先按下不表。</p>
+<div id="dbb904fd" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> trap(<span class="va">self</span>, height: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        res <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        stack <span class="op">=</span> []</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(height)):</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> stack <span class="kw">and</span> height[i]<span class="op">&gt;</span>height[stack[<span class="op">-</span><span class="dv">1</span>]]:</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                <span class="co"># cur=stack[-1]</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                cur<span class="op">=</span>stack.pop()</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="kw">not</span> stack:</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">break</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>                h<span class="op">=</span><span class="bu">min</span>(height[i],height[stack[<span class="op">-</span><span class="dv">1</span>]]) <span class="op">-</span> height[cur]</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>                res <span class="op">+=</span> (i<span class="op">-</span>stack[<span class="op">-</span><span class="dv">1</span>]<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>h</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>            stack.append(i)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> res                 </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="滑动窗口" class="level1">
+<h1>滑动窗口</h1>
+<section id="无重复字符的最长子串" class="level2">
+<h2 class="anchored" data-anchor-id="无重复字符的最长子串">3.无重复字符的最长子串</h2>
+<p>给你一个字符串 s，要找最长的、没有重复字符的连续子串长度。</p>
+<p>注意是：</p>
+<ul>
+<li>子串：必须连续</li>
+<li>不是子序列</li>
+</ul>
+<p>例如：</p>
+<ul>
+<li>“abcabcbb” 的答案是 3，因为 “abc” 最长</li>
+<li>“bbbbb” 的答案是 1</li>
+<li>“pwwkew” 的答案是 3，对应 “wke”</li>
+</ul>
+<p><strong>题解</strong></p>
+<p>如果固定子串的左边界，例如对”abcabcbb”固定左边界为最左边的a，那么右边界一直往右遍历，截到”abca”就会遇到冲突。这个时候只要再往右移动左边界，取到”bca”就可以。但如果对于”pwwkew”，截到”pww”产生冲突时，左指针往右并不能解决问题，那样会截出”ww”还是不对的。</p>
+<p>如果这题还是双指针来做，对于一个无重复子串，指针该怎样移动来可能增长子串？同时，当子串的增长出现了重复字符情况，该怎么处理？</p>
+<p>我们维护一个窗口 [l, r]，表示当前这段子串没有重复字符。</p>
+<p>再用一个集合 seen 记录窗口里有哪些字符。</p>
+<p>做法是：</p>
+<ul>
+<li>r 不断右移，尝试加入新字符</li>
+<li>如果新字符没出现过，窗口继续扩大</li>
+<li>如果新字符重复了，就不断移动 l，把左边字符移出集合，直到不重复为止</li>
+</ul>
+<div id="66398885" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> lengthOfLongestSubstring(<span class="va">self</span>, s: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        seen <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        l <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        ans <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(s)):</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> s[r] <span class="kw">in</span> seen:</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>                seen.remove(s[l])</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                l <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>            seen.add(s[r])</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>            ans <span class="op">=</span> <span class="bu">max</span>(ans, r <span class="op">-</span> l <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ans</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>由于每个字符最多被加入集合一次，也最多被移出集合一次，也就是说：</p>
+<ul>
+<li>r 总共走 n 步</li>
+<li>l 总共也最多走 n 步</li>
+</ul>
+<p>所以总的时间复杂度是O(n)。空间复杂度是O(k)，k是不同的字符数，最坏的情况是O(n)。</p>
+<p>一个常见的优化是使用哈希表记录字符最后的出现位置。</p>
+<p>如果当前字符 s[r] 之前出现过，而且它上一次出现位置在当前窗口里，那么左指针可以直接跳到“上次出现位置 + 1”，不必一个个删。</p>
+<div id="9bfc3cbe" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> lengthOfLongestSubstring(<span class="va">self</span>, s: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        last <span class="op">=</span> {}</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        l <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        ans <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> r, ch <span class="kw">in</span> <span class="bu">enumerate</span>(s):</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> ch <span class="kw">in</span> last <span class="kw">and</span> last[ch] <span class="op">&gt;=</span> l:</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>                l <span class="op">=</span> last[ch] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>            last[ch] <span class="op">=</span> r</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>            ans <span class="op">=</span> <span class="bu">max</span>(ans, r <span class="op">-</span> l <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ans</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>last[ch] 表示字符 ch 上一次出现的位置。</p>
+<p>如果当前字符 ch 在窗口里重复了，也就是last[ch] &gt;= l，那么直接把左边界跳到last[ch] + 1，因为在那之前的窗口一定都不合法了。</p>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>维护一个“当前合法窗口”</p>
+<ul>
+<li>右边扩张</li>
+<li>一旦不合法，就移动左边恢复合法</li>
+<li>在过程中更新答案</li>
+</ul>
+<p>这类题以后会非常多：</p>
+<ul>
+<li>最长无重复子串</li>
+<li>最多含 K 种字符</li>
+<li>最小覆盖子串</li>
+<li>找所有异位词</li>
+<li>替换后的最长重复字符</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="找到字符串中所有字母异位词" class="level2">
+<h2 class="anchored" data-anchor-id="找到字符串中所有字母异位词">438.找到字符串中所有字母异位词</h2>
+<p>给两个字符串s和p，要在 s 中找到所有子串，它们：</p>
+<ul>
+<li>长度和 p 一样</li>
+<li>字母出现次数和 p 一样</li>
+</ul>
+<p>然后返回这些子串的起始下标。</p>
+<p><strong>题解</strong></p>
+<p>由于p给定，区间长度是固定的，l和r只能同步移动。字母异位词的题中我们知道了应该如何操作字符串，对于每个新区间我们都需要sort和join一次吗？同时区间滑动我也想不到除了遍历以外的方法。如果一个区间是符合要求的，那么可以统计进入和离开区间的字符情况，只要相等新的区间也符合要求。</p>
+<p>如果我们有对于字符的高效的计数方案，那么新区间的字符计数只要特定地+1和-1就可以了。回顾字母异位词的题，可以用约定好的定序列表实现这一点。</p>
+<div id="4b417162" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> findAnagrams(<span class="va">self</span>, s: <span class="bu">str</span>, p: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        n, m <span class="op">=</span> <span class="bu">len</span>(s), <span class="bu">len</span>(p)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> m <span class="op">&gt;</span> n:</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> []</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>        need <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> <span class="dv">26</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>        window <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> <span class="dv">26</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> ch <span class="kw">in</span> p:</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>            need[<span class="bu">ord</span>(ch) <span class="op">-</span> <span class="bu">ord</span>(<span class="st">'a'</span>)] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> ch <span class="kw">in</span> s[:m]:</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>            window[<span class="bu">ord</span>(ch) <span class="op">-</span> <span class="bu">ord</span>(<span class="st">'a'</span>)] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>        ans <span class="op">=</span> []</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> window <span class="op">==</span> need:</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>            ans.append(<span class="dv">0</span>)</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(m, n):</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>            window[<span class="bu">ord</span>(s[i]) <span class="op">-</span> <span class="bu">ord</span>(<span class="st">'a'</span>)] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>            window[<span class="bu">ord</span>(s[i <span class="op">-</span> m]) <span class="op">-</span> <span class="bu">ord</span>(<span class="st">'a'</span>)] <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> window <span class="op">==</span> need:</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>                ans.append(i <span class="op">-</span> m <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ans</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>由于数组长度是常数26，比较的时间复杂度是O(1)。总的时间复杂度是O(n)。空间复杂度是O(1)，严格来说这是个常数空间。</p>
+</section>
+</section>
+<section id="子串" class="level1">
+<h1>子串</h1>
+<section id="和为k的子数组" class="level2">
+<h2 class="anchored" data-anchor-id="和为k的子数组">560.和为k的子数组</h2>
+<p>给你数组 nums 和整数 k，要你统计有多少个连续子数组的和等于 k</p>
+<p>注意是：</p>
+<ul>
+<li>子数组</li>
+<li>必须连续</li>
+<li>求的是个数，不是是否存在</li>
+</ul>
+<p><strong>题解</strong></p>
+<p>暴力做的话就是枚举下标组合，然后求和。</p>
+<p>感觉使用滑动窗口不清楚有什么优越性或者便利性。除了数值和与k的比较之外，区间内并没有什么良好的性质。</p>
+<p>实际上，如果数组元素都是正数，是可以使用滑动窗口的。</p>
+<p>因为这时窗口和有非常好的性质：</p>
+<ul>
+<li>右端右移，窗口和只会变大</li>
+<li>左端右移，窗口和只会变小</li>
+</ul>
+<p>也就是窗口和对指针移动是单调响应的。</p>
+<p>所以你可以维护一个窗口和 sum：</p>
+<ul>
+<li>如果 sum &lt; k，右指针右移，让它变大</li>
+<li>如果 sum &gt; k，左指针右移，让它变小</li>
+<li>如果 sum == k，找到一个，再继续移动</li>
+</ul>
+<p>这在“元素全正”的情况下是可行的。</p>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>滑动窗口不是“连续子数组题通用解”，它依赖窗口某个性质在扩张/收缩时有可控的单调变化。</p>
+<p>滑动窗口的本质是</p>
+<p><strong>维护一个连续区间，并利用区间状态在左右端移动时的可增量更新性和单调性，在线性时间内完成搜索。</strong></p>
+</div>
+</div>
+</div>
+<p>说回这道题。我们需要使用一个在接雨水问题g老师给我写的那版代码里用到的工具：<strong>前缀和</strong>。</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>定义前缀和</p>
+<p><span class="math display">\[
+pre[i] = nums[0] + nums[1] + \cdots + nums[i]
+\]</span></p>
+<p>那么子数组nums[l..r]的和可以写作</p>
+<p><span class="math display">\[
+pre[r] - pre[l-1]
+\]</span></p>
+<p>本质上是先预处理一遍从头开始到这个位置元素的累计和，把多次区间查询的重复计算转化为一次预处理+差分计算。</p>
+</div>
+</div>
+</div>
+<p>对本题而言，如果<span class="math inline">\(pre[r] - pre[l-1] = k\)</span>，那么移项后<span class="math inline">\(pre[l-1] = pre[r] - k\)</span>。</p>
+<p>和转化为了可供查询的属性。</p>
+<p>当我们遍历到当前位置 r，当前前缀和是 pre。如果之前某个位置的前缀和等于pre−k，那么从那个位置后面开始，到当前 r 结束，这一段子数组和就等于 k。</p>
+<p>所以问题变成：</p>
+<p><strong>对当前前缀和 pre，之前出现过多少次 pre-k</strong></p>
+<p>我们一边遍历数组，一边维护：</p>
+<ul>
+<li>pre：当前前缀和</li>
+<li>cnt：哈希表，记录“某个前缀和出现了多少次”</li>
+</ul>
+<p>遍历到当前数时：</p>
+<ol type="1">
+<li>更新当前前缀和 pre += x</li>
+<li>看 pre - k 之前出现过几次</li>
+<li>把这些次数加到答案里</li>
+<li>再把当前前缀和 pre 记录进哈希表</li>
+</ol>
+<div id="88b098f0" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> subarraySum(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>], k: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>        cnt <span class="op">=</span> {<span class="dv">0</span>: <span class="dv">1</span>}</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>        pre <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>        ans <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> x <span class="kw">in</span> nums:</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>            pre <span class="op">+=</span> x</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>            ans <span class="op">+=</span> cnt.get(pre <span class="op">-</span> k, <span class="dv">0</span>)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>            cnt[pre] <span class="op">=</span> cnt.get(pre, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ans</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>时间复杂度是O(n)。空间复杂度是O(n)。</p>
+<p>这里最关键的细节是cnt有初值{0: 1}。它表示在还没开始遍历前，前缀和0已经出现过1次。</p>
+<p>这样如果某一段从下标0开始，正好和为k，也能被统计到。</p>
+<p>例如<code>nums = [1, 1]</code>，<code>k = 2</code>,</p>
+<p>遍历到第二个 1 时，pre = 2，需要找 pre-k = 0。如果没有预先放入 {0:1}，这个从开头开始的子数组就会漏掉。</p>
+<p>本题的哈希表和两数之和问题的哈希表最大的区别是，两数之和只要知道补数存不存在，所以哈希表记录的是下标位置；而本题是计数，所以记录的是出现次数。</p>
+<p>而一旦某个 pre-k 出现过多次，就说明以当前点为右端点，有多个不同起点都能组成和为 k 的子数组。</p>
+</section>
+<section id="滑动窗口最大值" class="level2">
+<h2 class="anchored" data-anchor-id="滑动窗口最大值">239.滑动窗口最大值</h2>
+<p>数组 nums，窗口大小固定为 k。<code>1&lt;=k&lt;=nums.length</code></p>
+<p>窗口从左到右每次移动一格，输出每个窗口里的最大值。</p>
+<p><strong>题解</strong></p>
+<p>这需求肯定有现成的函数了（雾</p>
+<p>对第一个窗口需要排序，后面只需要新进入窗口的值和已有的最大值进行比较即可，这样复杂度肯定是O(n)。</p>
+<blockquote class="blockquote">
+<p>码完这一句话之后我写下了“那我自己来写一个。”</p>
+</blockquote>
+<p>但如果已有的最大值被弹出就不对了。我们可以同时维护最大值和次大值，如果最大值被弹出，那新进入队列的得和次大值进行比较。</p>
+<blockquote class="blockquote">
+<p>我把上面的“那我自己来写一个。”挪到了这个地方，然后开始龟速敲代码，并且忘记了一些基本的列表操作语法。然后我举了个例子发现自己完全想错了。</p>
+</blockquote>
+<p>但如果次大值被弹出呢？我感觉不对劲了。如果很不幸nums是个降序数组，<code>[5,4,3,2,0,...]</code>，k=3时，滑动两次我们就丢失掉了最大值和次大值的信息了。如果我们每滑两次就要sort一次，这复杂度应该是O(nk log k)才对。完蛋了。</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
