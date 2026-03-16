@@ -9,7 +9,9 @@ website:
       - href: index.qmd
         text: Home
       - href: leetcode.qmd
-        text: LeetCode Hot 100
+        text: LeetCode HOT 100
+      - href: sqlpandas.qmd
+        text: SQL & pandas
 
 format:
   html:

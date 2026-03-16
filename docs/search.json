@@ -1,5 +1,145 @@
 [
   {
+    "objectID": "sqlpandas.html",
+    "href": "sqlpandas.html",
+    "title": "SQL & pandas",
+    "section": "",
+    "text": "SQL的table，等同于pandas的DataFrame。\n\n\n\nSELECT user_id, amount\nFROM orders;\n等同于\ndf[['user_id', 'amount']]\n注意：\n在SQL中，一般来说;之前的所有内容作为一个完整的SQL语句进行解析和执行。\n对于一般的空格（当然字符串里的和影响词汇间隔的是不可忽略的）、空行和缩进，SQL并不敏感，但最好保持好的清晰的代码习惯。大小写问题稍微复杂一点，不过保持好习惯肯定不会出错。\npandas中选择多列df[[列名列表]]，双中括号。如果选择单列df['amount']，返回的是一个Series，不是完整的二维表。\n\n\n\nSELECT *\nFROM orders\nWHERE status = 'paid';\n\ndf[df['status'] == 'paid']\n\n注意，SELECT *中*是通配符。在只指定了行条件的情况下，指的是选中所有列（仅限符合要求的行）。\n以及SQL的等号判断就是=，不是==。例如WHERE status = 'paid'\n\n\n\nSELECT *\nFROM orders\nWHERE status = 'paid' AND amount &gt; 100;\n\ndf[(df['status'] == 'paid') & (df['amount'] &gt; 100)]\n\nAND对应&，如果是或那就是OR对应|。注意pandas中每个条件都要加括号。\n\n\n\n降序：\nSELECT *\nFROM orders\nORDER BY amount DESC;\n\ndf.sort_values('amount', ascending=False)\n\n升序：\nSELECT *\nFROM orders\nORDER BY amount ASC;\n\ndf.sort_values('amount', ascending=True)\n\nASC就是ascending嘛。另外pandas中排序的默认行为是升序。\n\n\n\nSELECT *\nFROM orders\nLIMIT 5;\n\ndf.head(5)\n\n特别地，df.head()就是默认前5行。\n\n\n\nSELECT DISTINCT city\nFROM orders;\n\ndf['city'].drop_duplicates()\n\n返回的是具体的值（Series）。如果要求统计不重复元素数量：\nSELECT COUNT(DISTINCT city)\nFROM orders;\n\ndf['city'].nunique()\n\n\n\n\nSELECT *,\n       amount * 0.9 AS discount_amount\nFROM orders;\n\ndf['discount_amount'] = df['amount'] * 0.9\n\n\n\n\n\n\n\npandas多条件要加括号，选多列加中括号。\nSQL中命令的基本顺序通常是\nSELECT ...\nFROM ...\nWHERE ...\nORDER BY ...\nLIMIT ..."
+  },
+  {
+    "objectID": "sqlpandas.html#表",
+    "href": "sqlpandas.html#表",
+    "title": "SQL & pandas",
+    "section": "",
+    "text": "SQL的table，等同于pandas的DataFrame。"
+  },
+  {
+    "objectID": "sqlpandas.html#选列",
+    "href": "sqlpandas.html#选列",
+    "title": "SQL & pandas",
+    "section": "",
+    "text": "SELECT user_id, amount\nFROM orders;\n等同于\ndf[['user_id', 'amount']]\n注意：\n在SQL中，一般来说;之前的所有内容作为一个完整的SQL语句进行解析和执行。\n对于一般的空格（当然字符串里的和影响词汇间隔的是不可忽略的）、空行和缩进，SQL并不敏感，但最好保持好的清晰的代码习惯。大小写问题稍微复杂一点，不过保持好习惯肯定不会出错。\npandas中选择多列df[[列名列表]]，双中括号。如果选择单列df['amount']，返回的是一个Series，不是完整的二维表。"
+  },
+  {
+    "objectID": "sqlpandas.html#过滤行",
+    "href": "sqlpandas.html#过滤行",
+    "title": "SQL & pandas",
+    "section": "",
+    "text": "SELECT *\nFROM orders\nWHERE status = 'paid';\n\ndf[df['status'] == 'paid']\n\n注意，SELECT *中*是通配符。在只指定了行条件的情况下，指的是选中所有列（仅限符合要求的行）。\n以及SQL的等号判断就是=，不是==。例如WHERE status = 'paid'"
+  },
+  {
+    "objectID": "sqlpandas.html#多条件过滤",
+    "href": "sqlpandas.html#多条件过滤",
+    "title": "SQL & pandas",
+    "section": "",
+    "text": "SELECT *\nFROM orders\nWHERE status = 'paid' AND amount &gt; 100;\n\ndf[(df['status'] == 'paid') & (df['amount'] &gt; 100)]\n\nAND对应&，如果是或那就是OR对应|。注意pandas中每个条件都要加括号。"
+  },
+  {
+    "objectID": "sqlpandas.html#排序",
+    "href": "sqlpandas.html#排序",
+    "title": "SQL & pandas",
+    "section": "",
+    "text": "降序：\nSELECT *\nFROM orders\nORDER BY amount DESC;\n\ndf.sort_values('amount', ascending=False)\n\n升序：\nSELECT *\nFROM orders\nORDER BY amount ASC;\n\ndf.sort_values('amount', ascending=True)\n\nASC就是ascending嘛。另外pandas中排序的默认行为是升序。"
+  },
+  {
+    "objectID": "sqlpandas.html#取前几行",
+    "href": "sqlpandas.html#取前几行",
+    "title": "SQL & pandas",
+    "section": "",
+    "text": "SELECT *\nFROM orders\nLIMIT 5;\n\ndf.head(5)\n\n特别地，df.head()就是默认前5行。"
+  },
+  {
+    "objectID": "sqlpandas.html#去重",
+    "href": "sqlpandas.html#去重",
+    "title": "SQL & pandas",
+    "section": "",
+    "text": "SELECT DISTINCT city\nFROM orders;\n\ndf['city'].drop_duplicates()\n\n返回的是具体的值（Series）。如果要求统计不重复元素数量：\nSELECT COUNT(DISTINCT city)\nFROM orders;\n\ndf['city'].nunique()"
+  },
+  {
+    "objectID": "sqlpandas.html#派生新列",
+    "href": "sqlpandas.html#派生新列",
+    "title": "SQL & pandas",
+    "section": "",
+    "text": "SELECT *,\n       amount * 0.9 AS discount_amount\nFROM orders;\n\ndf['discount_amount'] = df['amount'] * 0.9\n\n\n\n\n\n\n\npandas多条件要加括号，选多列加中括号。\nSQL中命令的基本顺序通常是\nSELECT ...\nFROM ...\nWHERE ...\nORDER BY ...\nLIMIT ..."
+  },
+  {
+    "objectID": "sqlpandas.html#总数",
+    "href": "sqlpandas.html#总数",
+    "title": "SQL & pandas",
+    "section": "总数",
+    "text": "总数\nSELECT COUNT(*) AS order_cnt\nFROM orders;\n\nlen(df)\n# 或者\ndf.shape[0]\n\n注意：SELECT COUNT(*) AS order_cnt当中的AS，用于对查询结果进行重命名。查询结果中，原本可能显示为COUNT(*)的列现在会显示为order_cnt。"
+  },
+  {
+    "objectID": "sqlpandas.html#总和",
+    "href": "sqlpandas.html#总和",
+    "title": "SQL & pandas",
+    "section": "总和",
+    "text": "总和\nSELECT SUM(amount) AS total_amount\nFROM orders;\n\ndf['amount'].sum()"
+  },
+  {
+    "objectID": "sqlpandas.html#均值",
+    "href": "sqlpandas.html#均值",
+    "title": "SQL & pandas",
+    "section": "均值",
+    "text": "均值\nSELECT AVG(amount) AS avg_amount\nFROM orders;\n\ndf['amount'].mean()"
+  },
+  {
+    "objectID": "sqlpandas.html#分组统计",
+    "href": "sqlpandas.html#分组统计",
+    "title": "SQL & pandas",
+    "section": "分组统计",
+    "text": "分组统计\nSELECT city, COUNT(*) AS order_cnt\nFROM orders\nGROUP BY city;\n\ndf.groupby('city').size()\n\n需要注意SQL这里，尽管没有操作city列，在后面也写出了GROUP BY city，但SELECT中依然要写进city。\n更常见的是一起做：\nSELECT city,\n       COUNT(*) AS order_cnt,\n       SUM(amount) AS total_amount,\n       AVG(amount) AS avg_amount\nFROM orders\nGROUP BY city;\n\ndf.groupby('city')['amount'].agg(['count', 'sum', 'mean'])\n\n特别地，pandas中这样操作常常会让city成为索引。经常恢复为普通列：\n\ndf.groupby('city')['amount'].agg(['count', 'sum', 'mean']).reset_index()"
+  },
+  {
+    "objectID": "sqlpandas.html#依据多列分组",
+    "href": "sqlpandas.html#依据多列分组",
+    "title": "SQL & pandas",
+    "section": "依据多列分组",
+    "text": "依据多列分组\nSELECT city, status, COUNT(*) AS order_cnt\nFROM orders\nGROUP BY city, status;\n\ndf.groupby(['city', 'status']).size().reset_index(name='order_cnt')\n\n注意：\n\n如果不加.reset_index()，会得到多重索引MultiIndex，我们一般不太喜欢\n如果不指定name参数，列名默认是0\n\n\n\n\n\n\n\n更进一步地，上面多列分组的例子中，\n\ndf.groupby('city')['amount'].agg(['count', 'sum', 'mean']).reset_index()\n\n.reset_index()并没有指定name参数。这是因为，多组聚合的DataFrame.reset_index()压根就没有name参数。但它们是有列名的，是agg函数指定的三个函数(‘count’, ‘sum’, ‘mean’)。如果我们需要自定义列名，也是可以的，只需要在agg中指定元组列表：\n\ndf.groupby('city')['amount']\n    .agg([('order_count', 'count'), \n          ('total_amount', 'sum'), \n          ('avg_amount', 'mean')])\n    .reset_index()"
+  },
+  {
+    "objectID": "sqlpandas.html#过滤分组结果",
+    "href": "sqlpandas.html#过滤分组结果",
+    "title": "SQL & pandas",
+    "section": "过滤分组结果",
+    "text": "过滤分组结果\nSELECT city, COUNT(*) AS order_cnt\nFROM orders\nGROUP BY city\nHAVING COUNT(*) &gt; 1;\n在SQL中的一个核心区别是，\n\nWHERE：分组前过滤原始行\nHAVING：分组后过滤聚合结果\n\n同时需要注意，WHERE和HAVING中提到的列，不一定非得需要在SELECT中提到。这点和GROUP BY不一样。\n另外，虽然我们在这里已经给COUNT(*)定义了别名order_cnt，但在HAVING中最好还是不用别名，而是用原始的HAVING COUNT(*) &gt; 1写法。SQL的语法就是这样，可以认为是各家发行版特性不同，只能学最大公约数了。\npandas则是写成两步，先聚合再过滤：\n\ntmp = df.groupby('city').size().reset_index(name='order_cnt')\ntmp[tmp['order_cnt'] &gt; 1]\n\n\n\n\n\n\n\npandas groupby后面不要忘记选列。应该是df.groupby('city')['amount'].sum()\npandas中count() 和 size() 不完全一样。简单来说count()数非空值，size()数行数。\n和SQL对应的话，几个计数函数的关系是这样的：\n\n\n\n\n\n\n\n\npandas 方法\nSQL 语法\n解释\n\n\n\n\nsize()\nCOUNT(*)\n统计分组中的总行数，包含空值\n\n\ncount()\nCOUNT(column_name)\n统计指定列的非空值数量\n\n\nnunique()\nCOUNT(DISTINCT column_name)\n统计指定列的不重复非空值数量\n\n\n\n在SQL中，分清WHERE和HAVING。\n\nWHERE amount &gt; 100：先筛订单\nHAVING COUNT(*) &gt; 10：先分组，再筛组"
+  },
+  {
+    "objectID": "sqlpandas.html#键",
+    "href": "sqlpandas.html#键",
+    "title": "SQL & pandas",
+    "section": "键",
+    "text": "键\n主键 (Primary Key)\n\n定义：表中唯一标识每一行记录的列（或列组合），确保唯一性和非空。\n特性：\n\n唯一标识：每行有且仅有一个唯一主键值\n非空约束：主键列不允许 NULL 值\n表级唯一：一张表只能有一个主键\n\n作用：数据完整性约束，作为记录的唯一标识。\n\n连接键 (Join Key)\n\n定义：用于关联多张表的列，通常是外键引用另一表的主键。\n特性：\n\n关系桥梁：建立表间关联关系\n可重复：连接键值允许多行重复\n可多列：连接可基于多列组合\n\n作用：实现多表关联查询，维护数据关系。\n\njoin的意义是把分散在不同表里的信息，按共同字段拼起来。"
+  },
+  {
+    "objectID": "sqlpandas.html#内连接",
+    "href": "sqlpandas.html#内连接",
+    "title": "SQL & pandas",
+    "section": "内连接",
+    "text": "内连接\n内连接只保留两边都能匹配上的记录。\nSELECT o.order_id, o.user_id, o.amount, u.city\nFROM orders o\nINNER JOIN users u\nON o.user_id = u.user_id;\n\ndf_orders.merge(df_users, on='user_id', how='inner')\n\nSQL中直接写JOIN等同于INNER JOIN。这和pandas里面merge不定义how的默认行为一致。\nSQL中如果用到了多表，最好养成写别名的好习惯FROM orders o，这样可以避免重复字段。\n另外，pandas的merge也可以通过参数来解决左右表连接字段列名不同的问题。\n\ndf_orders.merge(df_users, left_on='user_id', right_on='uid', how='inner')"
+  },
+  {
+    "objectID": "sqlpandas.html#左连接",
+    "href": "sqlpandas.html#左连接",
+    "title": "SQL & pandas",
+    "section": "左连接",
+    "text": "左连接\n左连接保留左表的所有记录。右表能匹配上就补信息，匹配不上就填空值。\nSELECT o.order_id, o.user_id, o.amount, u.city\nFROM orders o\nLEFT JOIN users u\nON o.user_id = u.user_id;\n\ndf_orders.merge(df_users, on='user_id', how='left')\n\n\n\n\n\n\n\n一个LEFT JOIN和WHERE联动时候的经典陷阱。\nSELECT *\nFROM orders o\nLEFT JOIN users u\nON o.user_id = u.user_id\nWHERE u.city = 'Beijing';\n它的效果并不是LEFT JOIN。实际上这个写法通常会把匹配不到的行也过滤掉，效果很像INNER JOIN。\n这是因为WHERE u.city = 'Beijing'会把u.city IS NULL的行去掉。\n如果真的想保留左表全部，只是在右表匹配时限制条件，常见写法是把条件放进ON里：\nSELECT *\nFROM orders o\nLEFT JOIN users u\nON o.user_id = u.user_id\nAND u.city = 'Beijing';\n\n放在WHERE，是在join完之后筛结果\n放在ON，是在匹配右表时加条件"
+  },
+  {
+    "objectID": "sqlpandas.html#业务粒度和话术",
+    "href": "sqlpandas.html#业务粒度和话术",
+    "title": "SQL & pandas",
+    "section": "业务、粒度和话术",
+    "text": "业务、粒度和话术\n\n一段关于join的业务话术： 我会先以订单表为主表，用 LEFT JOIN 关联用户表，通过 user_id 补充用户维度信息，比如城市。之所以用 LEFT JOIN，是为了保留所有订单，避免因为用户维表缺失而丢单。随后再按城市聚合计算订单量或 GMV。同时我会注意连接键是否重复，避免 join 后出现数据膨胀和重复计数问题。"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome",
+    "section": "",
+    "text": "Hello\n这是我的个人博客首页。"
+  },
+  {
     "objectID": "leetcode.html",
     "href": "leetcode.html",
     "title": "LeetCode HOT 100",
@@ -82,12 +222,5 @@
     "title": "LeetCode HOT 100",
     "section": "239.滑动窗口最大值",
     "text": "239.滑动窗口最大值\n数组 nums，窗口大小固定为 k。1&lt;=k&lt;=nums.length\n窗口从左到右每次移动一格，输出每个窗口里的最大值。\n题解\n这需求肯定有现成的函数了（雾\n对第一个窗口需要排序，后面只需要新进入窗口的值和已有的最大值进行比较即可，这样复杂度肯定是O(n)。\n\n码完这一句话之后我写下了“那我自己来写一个。”\n\n但如果已有的最大值被弹出就不对了。我们可以同时维护最大值和次大值，如果最大值被弹出，那新进入队列的得和次大值进行比较。\n\n我把上面的“那我自己来写一个。”挪到了这个地方，然后开始龟速敲代码，并且忘记了一些基本的列表操作语法。然后我举了个例子发现自己完全想错了。\n\n但如果次大值被弹出呢？我感觉不对劲了。如果很不幸nums是个降序数组，[5,4,3,2,0,...]，k=3时，滑动两次我们就丢失掉了最大值和次大值的信息了。如果我们每滑两次就要sort一次，这复杂度应该是O(nk log k)才对。完蛋了。"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome",
-    "section": "",
-    "text": "Hello\n这是我的个人博客首页。"
   }
 ]
