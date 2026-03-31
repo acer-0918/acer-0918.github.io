@@ -12,7 +12,7 @@ format:
     highlight-style: github
     monofont: "Consolas"
     code-fold: false
-    code-copy: true
+    code-copy: hover
 execute:
   echo: true
   eval: false
@@ -543,7 +543,7 @@ if nums[i] > 0:
 
 排序的时间复杂度是O(n log n)，i的遍历是O(n)，每个i下双指针是O(n)，所以总体是O(n^2^)。空间复杂度是O(1)。
 
-## 42.接雨水
+## 42.接雨水（困难）
 
 给你一个数组 height，每个数表示一根柱子的高度。
 
@@ -1072,7 +1072,7 @@ class Solution:
 
 而一旦某个 pre-k 出现过多次，就说明以当前点为右端点，有多个不同起点都能组成和为 k 的子数组。
 
-## 239.滑动窗口最大值
+## 239.滑动窗口最大值（困难）
 
 数组 nums，窗口大小固定为 k。`1<=k<=nums.length`
 
@@ -1091,4 +1091,397 @@ class Solution:
 > 我把上面的“那我自己来写一个。”挪到了这个地方，然后开始龟速敲代码，并且忘记了一些基本的列表操作语法。然后我举了个例子发现自己完全想错了。
 
 但如果次大值被弹出呢？我感觉不对劲了。如果很不幸nums是个降序数组，`[5,4,3,2,0,...]`，k=3时，滑动两次我们就丢失掉了最大值和次大值的信息了。如果我们每滑两次就要sort一次，这复杂度应该是O(nk log k)才对。完蛋了。
+
+我们需要一种东西能快速得到最大值，同时还能够在窗口右移的过程中不断更新。
+
+> 哈哈知识锁
+
+> 有点子抽象我们今天先不看
+
+> 然后我就休息了十天。这当中我去用vibe coding写游戏去了，更加感到自己的无能。
+
+> 转眼又过去了五天。
+
+还真是知识锁。
+
+我们需要一种队列，并且使得队列里的元素对应的值由大到小排列。
+
+- 队头永远就是当前窗口最大值
+- 新元素进来时，把队尾那些比它小的都删掉，因为它们以后不可能成为最大值了
+
+这就是单调递减队列。进一步地，队列当中应该存的是下标，因为我们需要通过下标来判断有没有滑出窗口。至于值比较的时候，拿着下标去原数组里面查就可以了。拿着下标查值是容易的，这里可没有什么反函数啊。
+
+```{python}
+from collections import deque
+
+class Solution:
+    def maxSlidingWindow(self, nums: list[int], k: int) -> list[int]:
+        q = deque()   # 存下标，且对应值单调递减
+        ans = []
+
+        for i, x in enumerate(nums):
+            # 1. 删除队头中已经滑出窗口的下标
+            if q and q[0] <= i - k:
+                q.popleft()
+
+            # 2. 维护单调递减：把队尾比当前值小的都弹掉
+            while q and nums[q[-1]] < x:
+                q.pop()
+
+            # 3. 当前下标入队
+            q.append(i)
+
+            # 4. 当窗口形成后，记录答案
+            if i >= k - 1:
+                ans.append(nums[q[0]])
+
+        return ans
+```
+
+:::{.callout-note}
+此处用到了deque这一数据结构，它的名称叫做双端队列。
+
+对于我们熟悉的普通队列queue，是先进先出FIFO的，例如排队；而栈stack，是后进先出LIFO的，例如洗盘子，最后放上去的盘子先洗。
+
+这两种结构的入队和出队都只能在单端进行，例如普通队列只能队尾入队，队首出队。
+
+而对于双端队列，在队首队尾都能进行数据的插入和删除，这种双端操作的时间复杂度依然是O(1)，有很强的便利性。如果是列表，从右边加删一般是O(1)，但左边加删则是O(n)，由于底层是连续内存，动了最左边后面的也要整体移动。
+
+在本题中使用双端队列的必要性是我们要频繁地删除队首过期的窗口外元素。
+:::
+
+本质上双端队列q是在维护窗口里所有未来可能成为最大值的候选人。最重要的一步在于一个新数加入前，会把小于新数的队尾元素弹掉，并且**一直弹到队尾不小于新数为止**。
+
+从生命周期的角度来看，队列中的数相对于新数有两方面的压力：
+
+1. 值的压力。由于题目要求最大值，比新数小的数在值上就比不过。
+
+2. 寿命的压力。~~是寿命论的味道~~队列中的数比新数更靠左，寿命一定比新数更短，就算是熬老头，在新数从队首弹出时，这些老数早就被弹出去了。
+
+所以两方面都比不过，被完全支配了。
+
+使用单调递减的双端队列的解法时间复杂度是O(n)，空间复杂度是O(k)。虽然for中有个while，但每个元素最多进队一次、出队一次，总操作时间还是线性的。
+
+## 76.最小覆盖子串（困难）
+
+给两个字符串s和t，要在s里找一个最短的连续子串，使得它包含t中所有字符（包括重复字符）。找不到就返回`""`。
+
+比如，`s = "ADOBECODEBANC"` `t = "ABC"`，答案是`"BANC"`。
+
+**题解**
+
+> 想不出来一点
+
+首先这个题肯定不是固定窗口，而是可变窗口。如果枚举下标，复杂度是O(m^^2)。
+
+如果使用双指针，我们需要提出一种运动模式来提高效率。可以使用熟悉的右指针负责扩张、左指针负责收缩的模式。
+
+第一步：右指针不断向右扩张。目的是把字符收进窗口，直到这个窗口已经“覆盖了 t”。
+
+第二步：左指针不断向右收缩。既然已经覆盖了，我们就尝试缩短它，看能不能变得更短。
+
+- 如果缩了以后仍然覆盖，那继续缩
+- 一旦不覆盖了，就停止收缩，再去扩右边
+
+这道题最关键的判断是怎样叫做覆盖了t。对于t，有一个计数表need来记录每种字符需要多少个；对于窗口，也有一个计数表window。然后我们每次比较need和window就好了。吗？
+
+可以通过增量比较的方式来避免全量比较。如果need中有3种字符要求，我们就设定`required = 3`。再定义一个`formed`，每当一种字符要求被满足的时候就让它自加`formed += 1`，那么只要`formed == required`就完成了覆盖任务。这是个重要的技巧。
+
+```{python}
+from collections import Counter, defaultdict
+
+class Solution:
+    def minWindow(self, s: str, t: str) -> str:
+        if not s or not t:
+            return ""
+
+        need = Counter(t)
+        window = defaultdict(int)
+
+        required = len(need)   # 需要满足的字符种类数
+        formed = 0             # 当前已经满足要求的字符种类数
+
+        left = 0
+        min_len = float('inf')
+        start = 0
+
+        for right, ch in enumerate(s):
+            # 1. 扩张窗口：把 s[right] 放进来
+            window[ch] += 1
+
+            # 2. 如果这个字符刚好达到要求，formed + 1
+            if ch in need and window[ch] == need[ch]:
+                formed += 1
+
+            # 3. 如果当前窗口已经覆盖 t，就尝试收缩左边界
+            while formed == required:
+                # 更新最短答案
+                if right - left + 1 < min_len:
+                    min_len = right - left + 1
+                    start = left
+
+                # 准备移出左端字符
+                left_ch = s[left]
+                window[left_ch] -= 1
+
+                # 如果移出后不满足要求了，formed - 1
+                if left_ch in need and window[left_ch] < need[left_ch]:
+                    formed -= 1
+
+                left += 1
+
+        return "" if min_len == float('inf') else s[start:start + min_len]
+```
+
+
+:::{.callout-note}
+Counter是collections模块里面的一个计数工具，是一个会自动数数的哈希表。
+
+例如对于
+
+```{python}
+from collections import Counter
+
+t = "AABC"
+need = Counter(t)
+print(need)
+```
+
+会输出`Counter({'A': 2, 'B': 1, 'C': 1})`
+:::
+
+:::{.callout-tip}
+关于这种字符串里面字符情况的计数，我们已经接触过好几种方法了。例如编码一个新的字符串，或者约定一个定序列表，字母对应位置是出现频次。
+
+编码字符串适用于一次性比较整体特征，不需要动态增删和更新。定序列表和哈希表本质上是一样的，但适用于字符集固定、小的情况。
+
+这里使用哈希表主要是为了代码清晰，定序列表也可以做，但Counter实现更便捷。
+:::
+
+右指针的扩张是默认行为（通过外层for），左指针的收缩则是条件行为（进入内层while）。
+
+这里一个关键的逻辑是左指针收缩的过程中，是收缩到刚刚非法为止。
+
+左右指针最多都扫一遍。而建`need`要O(n)的时间复杂度，所以总的时间复杂度是O(m+n)。空间复杂度是O(n)。
+
+:::{.callout-tip}
+到目前为止，我们已经把**固定窗口**、**最长合法窗口**、**最短合法窗口**都接触了一遍。
+
+**固定窗口**
+
+窗口长度固定不变。
+
+例如：
+
+- 长度为 k 的子数组最大值（239）
+- 长度为 k 的子串统计
+- 大小为 k 的平均值、和、最值
+
+特征：
+
+- 左右指针基本同步移动，右边进一个，左边就要出一个
+- k给定，不存在“自由收缩到更短”这件事
+- 维护当前窗口的某种信息
+
+**最长合法窗口**
+
+窗口大小可变，目标是在所有合法窗口中找最长。
+
+例如：
+
+- 无重复字符的最长子串（3）
+- 最多替换 k 次后的最长重复字符子串
+- 最多包含 k 种不同字符的最长子串
+
+特征：
+
+- 右指针负责扩张
+- 一旦窗口不合法，左指针就收缩，直到重新合法
+- 每次窗口合法时，可以更新最长答案
+
+核心节奏：非法时缩
+
+**最短合法窗口**
+
+窗口大小可变，目标是在所有合法窗口中找最短。
+
+例如：
+
+- 最小覆盖子串（76）
+- 和至少为 target 的最短子数组
+
+特征：
+
+- 右指针负责扩张，直到窗口合法
+- 一旦合法，左指针就尽量收缩
+- 在收缩过程中更新最短答案
+- 收缩到刚刚不合法后，再继续扩张
+
+核心节奏：合法时缩
+:::
+
+# 普通数组
+
+## 53.最大子数组和
+
+给你一个数组 nums，要找一个连续子数组，使它的元素和最大，返回这个最大和。
+
+注意：
+
+- 必须连续
+- 至少包含一个元素
+
+**题解**
+
+把前缀和算出来，找到最小的前缀和，以及它后面最大的前缀和，二者相减。这应该是O(n)吧。
+
+不对。因为一个全局最小的前缀和配上它后面最大的前缀和，不一定有一个很前面的局部最小前缀和以及某个全局最小前缀和之前的最大前缀和的搭配来得更大。我们并不能保证这一点。
+
+那么我们应该沿着下标来更新这个答案？一次性选对的思路往往是不可靠的，在线维护一般更加可取。
+
+我们可以尝试反过来想，对于每个下标，用它的前缀和减去它之前最小的前缀和，遍历一遍不断更新。
+
+```{python}
+class Solution:
+    def maxSubArray(self, nums: list[int]) -> int:
+        prefix = 0
+        min_prefix = 0
+        ans = float('-inf')
+
+        for x in nums:
+            prefix += x
+            ans = max(ans, prefix - min_prefix)
+            min_prefix = min(min_prefix, prefix)
+
+        return ans
+```
+
+这就是前缀和解法。接下来介绍最经典的动态规划/Kadane算法。
+
+如果是动态规划那一套的话，就是假定我们已经知道某一个状态的值，通过某种状态转移，来得到下一个状态的值，然后迭代求解。
+
+假定我们知道`dp[i-1] = 以 nums[i-1] 结尾的最大子数组和`。那么对于`nums[i]`，有两种选择：
+
+1. 把前面的和接上`nums[i]`。也就是`dp[i-1] + nums[i]`
+2. 把 `nums[i]` 单独作为一个新子数组开头。
+
+综合一下状态转移应该是：`dp[i] = max(nums[i], dp[i-1] + nums[i])`
+
+进一步地，我们发现`dp[i]`只依赖于`dp[i-1]`，也就是说是马尔可夫的。那完全不用开整个数组，用一个变量记录一下就好了。
+
+```{python}
+class Solution:
+    def maxSubArray(self, nums: list[int]) -> int:
+        cur = nums[0]
+        ans = nums[0]
+
+        for i in range(1, len(nums)):
+            cur = max(nums[i], cur + nums[i])
+            ans = max(ans, cur)
+
+        return ans
+```
+
+这就是Kadane算法。由于每个元素访问一次，它的时间复杂度为O(n)，空间复杂度为O(1)。
+
+再介绍神秘的分治法。
+
+对于一个区间 `[l, r]`，我们维护：
+
+1.  `iSum`：整个区间的总和
+    
+2.  `lSum`：这个区间的最大前缀和
+    
+3.  `rSum`：这个区间的最大后缀和
+    
+4.  `mSum`：这个区间的最大子数组和
+    
+
+这四个量合起来，就足够表示一个区间关于“最大子数组和”的全部关键信息。这很像一种“区间摘要”。
+
+如果把每个区间分成左区间和右区间，假设你已经知道左区间的四个量和右区间的四个量，那么原本的父区间的这四个量就能直接合并出来。我们来看看。
+
+**整个区间总和**：`iSum = L.iSum + R.iSum`。这个很自然。
+
+**最大前缀和**：
+
+父区间的最大前缀只有两种可能：
+
+-   完全在左区间里
+    
+-   包含整个左区间，再接上右区间的一段前缀
+    
+
+所以：`lSum \= max(L.lSum, L.iSum + R.lSum)`
+
+**最大后缀和**：
+
+同理：
+
+-   完全在右区间里
+    
+-   包含整个右区间，再接上左区间的一段后缀
+    
+
+所以：`rSum \= max(R.rSum, R.iSum + L.rSum)`
+
+**最大子数组和**：
+
+父区间的最大子数组只有三种来源：
+
+-   完全在左区间
+    
+-   完全在右区间
+    
+-   横跨中间 = 左区间最大后缀 + 右区间最大前缀
+    
+
+所以：`mSum \= max(L.mSum, R.mSum, L.rSum + R.lSum)`。这是最漂亮的一句。
+
+```{python}
+class Status:
+    def __init__(self, lSum: int, rSum: int, mSum: int, iSum: int):
+        self.lSum = lSum
+        self.rSum = rSum
+        self.mSum = mSum
+        self.iSum = iSum
+
+
+class Solution:
+    def maxSubArray(self, nums: list[int]) -> int:
+        def push_up(left: Status, right: Status) -> Status:
+            iSum = left.iSum + right.iSum
+            lSum = max(left.lSum, left.iSum + right.lSum)
+            rSum = max(right.rSum, right.iSum + left.rSum)
+            mSum = max(left.mSum, right.mSum, left.rSum + right.lSum)
+            return Status(lSum, rSum, mSum, iSum)
+
+        def get(left: int, right: int) -> Status:
+            if left == right:
+                x = nums[left]
+                return Status(x, x, x, x)
+
+            mid = (left + right) // 2
+            left_sub = get(left, mid)
+            right_sub = get(mid + 1, right)
+            return push_up(left_sub, right_sub)
+
+        return get(0, len(nums) - 1).mSum
+```
+
+这个解法的本质是为每个区间建立一个可合并的摘要信息。
+
+- 单点区间有自己的摘要
+- 两个子区间的摘要可以合并成父区间摘要
+- 最终整个数组的摘要里，`mSum` 就是答案
+
+它的时间复杂度是O(n)，空间复杂度是O(log n)。
+
+## 56.合并区间
+
+对若干区间`intervals[i] = [start_i, end_i]`，要求把所有有重叠的区间合并，最后返回一组两两不重叠、完全覆盖原来所有区间的结果。
+
+例如对`[[1,3],[2,6],[8,10],[15,18]]`，其中`[1,3]`和`[2,6]`重叠了，应该合并为`[1,6]`。所以最终结果为`[[1,6],[8,10],[15,18]]`。
+
+**题解**
 
