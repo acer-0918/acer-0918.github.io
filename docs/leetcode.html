@@ -250,7 +250,7 @@ nums[i] + nums[j] = target,\quad i \ne j
 </ol>
 <p><strong>题解</strong></p>
 <p>因为target是一个给定的值，一个很自然的想法是把所有这样的两数之和都拿出来和target比较，一定可以找到符合的。</p>
-<div id="53555c23" class="cell" data-execution_count="1">
+<div id="53555c23" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> twoSum(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>], target: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(nums)</span>
@@ -289,7 +289,7 @@ nums[i] + nums[j] = target,\quad i \ne j
 </div>
 <p>简而言之，枚举太慢，而我们刚好有一个工具能够使查询变得特别快，刚好这个题也可以转换成查询来做。</p>
 <p>所以我们代码的重点就是要实现边遍历边判断同时还得存，以及只遍历一次，不用多跑了。</p>
-<div id="1b7f8855" class="cell" data-execution_count="2">
+<div id="1b7f8855" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> twoSum(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>], target: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        seen <span class="op">=</span> {}</span>
@@ -342,7 +342,7 @@ nums[i] + nums[j] = target,\quad i \ne j
 <p><strong>题解</strong></p>
 <p>如果已经知道用dict做的话，我的第一反应是把字符串的性质转换为编码作为键，遍历一次，遍历到一个字符串的时候如果这个特殊编码的键没有在dict里面出现过，就新建一个键值对，出现过就往value里面append，最后把这个dict的values全输出来就好了。至于编码，<del>能是26位二进制吗</del>能是26个质数的乘积吗，出现次数就是幂次？但这样运算压力不知道会不会太大。</p>
 <p>好像完全可以使用纯字符串的方式来做啊。一种方式是直接重排字母<del>序顺不影响读阅</del>，把”abandon”排成”aabdnno”；还有一种是计数，写成”a2b1d1n2o1”。似乎完全取决于我们有什么处理字符串的工具。止步于此了。</p>
-<div id="1eecd56f" class="cell" data-execution_count="3">
+<div id="1eecd56f" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
@@ -360,7 +360,7 @@ nums[i] + nums[j] = target,\quad i \ne j
 <p>至于<code>list(groups.values())</code>就是前面提到的输出所有values。</p>
 <p>在字符串长度为k时，sorted的时间复杂度为O(k log k)，log k是比较次数。而遍历需要O(n)，所以总的时间复杂度为O(nk log k)。空间复杂度是O(nk)。</p>
 <p>字母计数也是可以做的。其实我们不需要显式写出字母，只要约定好26个位置就可以了。那么是一个列表？不全对。</p>
-<div id="b47050ba" class="cell" data-execution_count="4">
+<div id="b47050ba" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
@@ -419,7 +419,7 @@ nums[i] + nums[j] = target,\quad i \ne j
 <p>这样就可以在只遍历一次的情形下进行相邻数的聚类了。最后再统计一下各堆数量，得出最多的那一个。不过我并不知道上面的想法如何实现，也不知道时间复杂度，最重要的是好像在这套想法里看不到键在哪里（笑</p>
 <p>我一直尝试想从信息的角度分析一个问题的实现和时间复杂度之间的关系。题目要求O(n)，说明排序的信息有的是冗余的，对我们解答这道题的要求没有益处。特别的，这些题要求得到的东西中信息也是有限的，例如只需要得出最长连续序列的长度，而不是序列本身。我不知道这种想法是不是正确的或者有意义的。</p>
 <p>让我们看看答案。</p>
-<div id="35a0e23e" class="cell" data-execution_count="5">
+<div id="35a0e23e" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> longestConsecutive(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        num_set <span class="op">=</span> <span class="bu">set</span>(nums)</span>
@@ -449,7 +449,7 @@ nums[i] + nums[j] = target,\quad i \ne j
 <p>所以总访问次数必定不超过2n，所以是O(n)的时间复杂度。（注意啊不是说非得只能访问n次，O(n)不是n啊）</p>
 <p>我觉得题解的关键就是无序查询的便利性以及开头元素和后续元素的一次性对应。</p>
 <p>除了向右延伸的解法以外，还真有一种两边延伸的解法。关键在于，并不需要像我们最开始想的维护堆元素本身，而可以直接去维护长度（准确来说是维护边界元素及其序列长度）。</p>
-<div id="54de292d" class="cell" data-execution_count="6">
+<div id="54de292d" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> longestConsecutive(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        length <span class="op">=</span> {}</span>
@@ -529,7 +529,7 @@ nums[i] + nums[j] = target,\quad i \ne j
 <li>前 k 个位置已经是按顺序排好的非零元素</li>
 <li>后面全部填 0</li>
 </ul>
-<div id="d24b5908" class="cell" data-execution_count="7">
+<div id="d24b5908" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> moveZeroes(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        k <span class="op">=</span> <span class="dv">0</span></span>
@@ -547,7 +547,7 @@ nums[i] + nums[j] = target,\quad i \ne j
 <p>不过，双指针还没出场呢。</p>
 <p>上面这个方法有一个小问题是，如果前面从来都没有过0，那么这些非0数就不需要挪动位置啊，这些重新赋值的操作对它们而言是无意义的。例如<code>nums=[1,2,3,0,4]</code>，前三个数不用动，不需要再<code>nums[2]=3</code>了。就好像你让本来就不用换位置的小朋友先站起来再坐下一样。</p>
 <p>既然这样，我们就额外维护一个指针，它指向下一个非零元素应该放的位置。在遍历到非0元素时，如果它和遍历指针指向同一个位置，那就啥也不干（已经排对了）。如果指向不同，就<strong>交换</strong>这两个元素。</p>
-<div id="45f6a701" class="cell" data-execution_count="8">
+<div id="45f6a701" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> moveZeroes(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        i <span class="op">=</span> <span class="dv">0</span></span>
@@ -606,7 +606,7 @@ nums[i] + nums[j] = target,\quad i \ne j
 <p>其实这题贪心的思路并不是局部最优导向全局最优，而是反过来进行剪枝。</p>
 <p>试想两条线取最左和最右。现在尝试移动边界，宽度一定更小了，换取的是可能找到更长的最小边的机会。</p>
 <p>对于不等长的两条边界，应当如何移动呢？移动长的那条边，对增大预期面积没有帮助。应当只移动短的那条边，还有增大面积的机会。</p>
-<div id="9674dd33" class="cell" data-execution_count="9">
+<div id="9674dd33" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> maxArea(<span class="va">self</span>, height: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        l, r <span class="op">=</span> <span class="dv">0</span>, <span class="bu">len</span>(height) <span class="op">-</span> <span class="dv">1</span></span>
@@ -644,7 +644,7 @@ nums[i] + nums[j] + nums[k] = 0
 <p>暴力<span class="math inline">\(C_n^3\)</span>吗，有点意思。</p>
 <p>虽然三数之和和两数之和很像，但我感觉没什么可以借鉴的。毕竟两数之和保证这样的数对唯一，但这里的三元组可以有很多个；就算我们先第一次遍历把每个数作为-target一次，寻找其余两个数也不太像两数之和。</p>
 <p>嗯……a+b=-c的思路好像确实是对的。但对两数之和的借鉴就到此为止了。实际上，在固定了c去寻找a和b的过程中，有一个实现难度是被我们忽视的，那就是三元组的值的组合不能重复。在我们按下标遍历时，会出现两个不同下标元素值相同的情况，容易得到重复结果。去重才是这道题最难的地方。</p>
-<div id="361c9a99" class="cell" data-execution_count="10">
+<div id="361c9a99" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> threeSum(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]]:</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        nums.sort()</span>
@@ -694,7 +694,7 @@ nums[i] + nums[j] + nums[k] = 0
 <p>一方面，在枚举<code>nums[i]</code>时，如果它和<code>nums[i-1]</code>一样，得到的三元组也一样，所以直接跳过。</p>
 <p>另一方面，对于和刚好的情况，不能仅仅左右都只移动1格了事。如果移动到了相等的数，就继续移动，实现跳过的效果。</p>
 <p>同时还有一个小细节。</p>
-<div id="1f19122b" class="cell" data-execution_count="11">
+<div id="1f19122b" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> nums[i] <span class="op">&gt;</span> <span class="dv">0</span>:</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -706,7 +706,7 @@ nums[i] + nums[j] + nums[k] = 0
 <p>给你一个数组 height，每个数表示一根柱子的高度。</p>
 <p>下雨后，低的地方会积水，求总共能接多少水。</p>
 <p>例如对于<code>height = [0,1,0,2,1,0,1,3,2,1,2,1]</code>，图示如下。</p>
-<div id="5fb7e518" class="cell" data-execution_count="12">
+<div id="5fb7e518" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -730,7 +730,7 @@ nums[i] + nums[j] + nums[k] = 0
 <p>这样我们就得到了所有的边界，然后将相邻两个代入求面积再相加即可。</p>
 <p>问题是我们并不清楚这样的时间复杂度。首先我们要判断全局最大值，然后ij从两边往中间遍历一次，面积求和过程总共再遍历一次。应该也是O(n)。不过这样的下标操作还是有些繁琐了，在编写实际代码层面很可能出错或者没有妥善处理极端情况。</p>
 <p>g老师给我写了一个。我这个想法好像真没错，虽然不是标准解。空间复杂度也是O(n)。就是代码复杂度，有点高。</p>
-<div id="9bfe27e3" class="cell" data-execution_count="13">
+<div id="9bfe27e3" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> trap(<span class="va">self</span>, height: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(height)</span>
@@ -804,7 +804,7 @@ nums[i] + nums[j] + nums[k] = 0
 <p><span class="math display">\[
 \min(left\_max[i], right\_max[i]) - height[i]
 \]</span></p>
-<div id="8582a659" class="cell" data-execution_count="14">
+<div id="8582a659" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> trap(<span class="va">self</span>, height: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(height)</span>
@@ -833,7 +833,7 @@ nums[i] + nums[j] + nums[k] = 0
 <li><code>right_max</code> 表示当前从右到左见过的最高柱子</li>
 </ul>
 <p>当前该算哪一边的水量？谁那边的最大挡板更小，就先算谁，因为某位置的水量取决于左右挡板的较小值。</p>
-<div id="5a44a70d" class="cell" data-execution_count="15">
+<div id="5a44a70d" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> trap(<span class="va">self</span>, height: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        l, r <span class="op">=</span> <span class="dv">0</span>, <span class="bu">len</span>(height) <span class="op">-</span> <span class="dv">1</span></span>
@@ -857,7 +857,7 @@ nums[i] + nums[j] + nums[k] = 0
 <span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ans</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>以及还有一种查找边界的“单调栈”法。先按下不表。</p>
-<div id="dd19456b" class="cell" data-execution_count="16">
+<div id="dd19456b" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> trap(<span class="va">self</span>, height: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        res <span class="op">=</span> <span class="dv">0</span></span>
@@ -902,7 +902,7 @@ nums[i] + nums[j] + nums[k] = 0
 <li>如果新字符没出现过，窗口继续扩大</li>
 <li>如果新字符重复了，就不断移动 l，把左边字符移出集合，直到不重复为止</li>
 </ul>
-<div id="705329bb" class="cell" data-execution_count="17">
+<div id="705329bb" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> lengthOfLongestSubstring(<span class="va">self</span>, s: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        seen <span class="op">=</span> <span class="bu">set</span>()</span>
@@ -926,7 +926,7 @@ nums[i] + nums[j] + nums[k] = 0
 <p>所以总的时间复杂度是O(n)。空间复杂度是O(k)，k是不同的字符数，最坏的情况是O(n)。</p>
 <p>一个常见的优化是使用哈希表记录字符最后的出现位置。</p>
 <p>如果当前字符 s[r] 之前出现过，而且它上一次出现位置在当前窗口里，那么左指针可以直接跳到“上次出现位置 + 1”，不必一个个删。</p>
-<div id="9305b010" class="cell" data-execution_count="18">
+<div id="9305b010" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> lengthOfLongestSubstring(<span class="va">self</span>, s: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        last <span class="op">=</span> {}</span>
@@ -978,7 +978,7 @@ nums[i] + nums[j] + nums[k] = 0
 <p><strong>题解</strong></p>
 <p>由于p给定，区间长度是固定的，l和r只能同步移动。字母异位词的题中我们知道了应该如何操作字符串，对于每个新区间我们都需要sort和join一次吗？同时区间滑动我也想不到除了遍历以外的方法。如果一个区间是符合要求的，那么可以统计进入和离开区间的字符情况，只要相等新的区间也符合要求。</p>
 <p>如果我们有对于字符的高效的计数方案，那么新区间的字符计数只要特定地+1和-1就可以了。回顾字母异位词的题，可以用约定好的定序列表实现这一点。</p>
-<div id="4496a5f4" class="cell" data-execution_count="19">
+<div id="4496a5f4" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> findAnagrams(<span class="va">self</span>, s: <span class="bu">str</span>, p: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        n, m <span class="op">=</span> <span class="bu">len</span>(s), <span class="bu">len</span>(p)</span>
@@ -1086,7 +1086,7 @@ pre[r] - pre[l-1]
 <li>把这些次数加到答案里</li>
 <li>再把当前前缀和 pre 记录进哈希表</li>
 </ol>
-<div id="29af6dca" class="cell" data-execution_count="20">
+<div id="29af6dca" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> subarraySum(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>], k: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>        cnt <span class="op">=</span> {<span class="dv">0</span>: <span class="dv">1</span>}</span>
@@ -1143,7 +1143,7 @@ pre[r] - pre[l-1]
 <li>新元素进来时，把队尾那些比它小的都删掉，因为它们以后不可能成为最大值了</li>
 </ul>
 <p>这就是单调递减队列。进一步地，队列当中应该存的是下标，因为我们需要通过下标来判断有没有滑出窗口。至于值比较的时候，拿着下标去原数组里面查就可以了。拿着下标查值是容易的，这里可没有什么反函数啊。</p>
-<div id="beca7328" class="cell" data-execution_count="21">
+<div id="beca7328" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> deque</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
@@ -1200,7 +1200,7 @@ pre[r] - pre[l-1]
 <blockquote class="blockquote">
 <p>想不出来一点</p>
 </blockquote>
-<p>首先这个题肯定不是固定窗口，而是可变窗口。如果枚举下标，复杂度是O(m<sup></sup>2)。</p>
+<p>首先这个题肯定不是固定窗口，而是可变窗口。如果枚举下标，复杂度是O(m<sup>2</sup>)。</p>
 <p>如果使用双指针，我们需要提出一种运动模式来提高效率。可以使用熟悉的右指针负责扩张、左指针负责收缩的模式。</p>
 <p>第一步：右指针不断向右扩张。目的是把字符收进窗口，直到这个窗口已经“覆盖了 t”。</p>
 <p>第二步：左指针不断向右收缩。既然已经覆盖了，我们就尝试缩短它，看能不能变得更短。</p>
@@ -1210,7 +1210,7 @@ pre[r] - pre[l-1]
 </ul>
 <p>这道题最关键的判断是怎样叫做覆盖了t。对于t，有一个计数表need来记录每种字符需要多少个；对于窗口，也有一个计数表window。然后我们每次比较need和window就好了。吗？</p>
 <p>可以通过增量比较的方式来避免全量比较。如果need中有3种字符要求，我们就设定<code>required = 3</code>。再定义一个<code>formed</code>，每当一种字符要求被满足的时候就让它自加<code>formed += 1</code>，那么只要<code>formed == required</code>就完成了覆盖任务。这是个重要的技巧。</p>
-<div id="fed10bb7" class="cell" data-execution_count="22">
+<div id="fed10bb7" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter, defaultdict</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
@@ -1263,7 +1263,7 @@ pre[r] - pre[l-1]
 <div class="callout-body-container">
 <p>Counter是collections模块里面的一个计数工具，是一个会自动数数的哈希表。</p>
 <p>例如对于</p>
-<div id="97aea838" class="cell" data-execution_count="23">
+<div id="97aea838" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="st">"AABC"</span></span>
@@ -1360,7 +1360,7 @@ pre[r] - pre[l-1]
 <p>不对。因为一个全局最小的前缀和配上它后面最大的前缀和，不一定有一个很前面的局部最小前缀和以及某个全局最小前缀和之前的最大前缀和的搭配来得更大。我们并不能保证这一点。</p>
 <p>那么我们应该沿着下标来更新这个答案？一次性选对的思路往往是不可靠的，在线维护一般更加可取。</p>
 <p>我们可以尝试反过来想，对于每个下标，用它的前缀和减去它之前最小的前缀和，遍历一遍不断更新。</p>
-<div id="6bcae340" class="cell" data-execution_count="24">
+<div id="6bcae340" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> maxSubArray(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>        prefix <span class="op">=</span> <span class="dv">0</span></span>
@@ -1383,7 +1383,7 @@ pre[r] - pre[l-1]
 </ol>
 <p>综合一下状态转移应该是：<code>dp[i] = max(nums[i], dp[i-1] + nums[i])</code></p>
 <p>进一步地，我们发现<code>dp[i]</code>只依赖于<code>dp[i-1]</code>，也就是说是马尔可夫的。那完全不用开整个数组，用一个变量记录一下就好了。</p>
-<div id="8ae24fcc" class="cell" data-execution_count="25">
+<div id="8ae24fcc" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> maxSubArray(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        cur <span class="op">=</span> nums[<span class="dv">0</span>]</span>
@@ -1429,7 +1429,7 @@ pre[r] - pre[l-1]
 <li><p>横跨中间 = 左区间最大后缀 + 右区间最大前缀</p></li>
 </ul>
 <p>所以：<code>mSum \= max(L.mSum, R.mSum, L.rSum + R.lSum)</code>。这是最漂亮的一句。</p>
-<div id="5c41e751" class="cell" data-execution_count="26">
+<div id="5c41e751" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Status:</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, lSum: <span class="bu">int</span>, rSum: <span class="bu">int</span>, mSum: <span class="bu">int</span>, iSum: <span class="bu">int</span>):</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.lSum <span class="op">=</span> lSum</span>
