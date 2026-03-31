@@ -12,7 +12,7 @@ format:
     highlight-style: github
     monofont: "Consolas"
     code-fold: false
-    code-copy: true
+    code-copy: hover
 execute:
   echo: true
   eval: false
