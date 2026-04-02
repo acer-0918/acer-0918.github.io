@@ -222,7 +222,17 @@ window.Quarto = {
   <li><a href="#旋转图像" id="toc-旋转图像" class="nav-link" data-scroll-target="#旋转图像">48.旋转图像</a></li>
   <li><a href="#搜索二维矩阵ii" id="toc-搜索二维矩阵ii" class="nav-link" data-scroll-target="#搜索二维矩阵ii">240.搜索二维矩阵II</a></li>
   </ul></li>
-  <li><a href="#链表" id="toc-链表" class="nav-link" data-scroll-target="#链表">链表</a></li>
+  <li><a href="#链表" id="toc-链表" class="nav-link" data-scroll-target="#链表">链表</a>
+  <ul class="collapse">
+  <li><a href="#相交链表" id="toc-相交链表" class="nav-link" data-scroll-target="#相交链表">160.相交链表</a></li>
+  <li><a href="#反转链表" id="toc-反转链表" class="nav-link" data-scroll-target="#反转链表">206.反转链表</a></li>
+  <li><a href="#回文链表" id="toc-回文链表" class="nav-link" data-scroll-target="#回文链表">234.回文链表</a></li>
+  <li><a href="#环形链表" id="toc-环形链表" class="nav-link" data-scroll-target="#环形链表">141.环形链表</a></li>
+  <li><a href="#环形链表ii" id="toc-环形链表ii" class="nav-link" data-scroll-target="#环形链表ii">142.环形链表II</a></li>
+  <li><a href="#合并两个有序链表" id="toc-合并两个有序链表" class="nav-link" data-scroll-target="#合并两个有序链表">21.合并两个有序链表</a></li>
+  <li><a href="#两数相加" id="toc-两数相加" class="nav-link" data-scroll-target="#两数相加">2.两数相加</a></li>
+  <li><a href="#删除链表的倒数第-n-个结点" id="toc-删除链表的倒数第-n-个结点" class="nav-link" data-scroll-target="#删除链表的倒数第-n-个结点">19.删除链表的倒数第 N 个结点</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -261,7 +271,7 @@ nums[i] + nums[j] = target,\quad i \ne j
 </ol>
 <p><strong>题解</strong></p>
 <p>因为target是一个给定的值，一个很自然的想法是把所有这样的两数之和都拿出来和target比较，一定可以找到符合的。</p>
-<div id="0e2ec572" class="cell" data-execution_count="1">
+<div id="87b6ba68" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> twoSum(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>], target: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(nums)</span>
@@ -300,7 +310,7 @@ nums[i] + nums[j] = target,\quad i \ne j
 </div>
 <p>简而言之，枚举太慢，而我们刚好有一个工具能够使查询变得特别快，刚好这个题也可以转换成查询来做。</p>
 <p>所以我们代码的重点就是要实现边遍历边判断同时还得存，以及只遍历一次，不用多跑了。</p>
-<div id="67a50187" class="cell" data-execution_count="2">
+<div id="6460c89d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> twoSum(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>], target: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        seen <span class="op">=</span> {}</span>
@@ -353,7 +363,7 @@ nums[i] + nums[j] = target,\quad i \ne j
 <p><strong>题解</strong></p>
 <p>如果已经知道用dict做的话，我的第一反应是把字符串的性质转换为编码作为键，遍历一次，遍历到一个字符串的时候如果这个特殊编码的键没有在dict里面出现过，就新建一个键值对，出现过就往value里面append，最后把这个dict的values全输出来就好了。至于编码，<del>能是26位二进制吗</del>能是26个质数的乘积吗，出现次数就是幂次？但这样运算压力不知道会不会太大。</p>
 <p>好像完全可以使用纯字符串的方式来做啊。一种方式是直接重排字母<del>序顺不影响读阅</del>，把”abandon”排成”aabdnno”；还有一种是计数，写成”a2b1d1n2o1”。似乎完全取决于我们有什么处理字符串的工具。止步于此了。</p>
-<div id="2077e1c1" class="cell" data-execution_count="3">
+<div id="1986e6fd" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
@@ -371,7 +381,7 @@ nums[i] + nums[j] = target,\quad i \ne j
 <p>至于<code>list(groups.values())</code>就是前面提到的输出所有values。</p>
 <p>在字符串长度为k时，sorted的时间复杂度为O(k log k)，log k是比较次数。而遍历需要O(n)，所以总的时间复杂度为O(nk log k)。空间复杂度是O(nk)。</p>
 <p>字母计数也是可以做的。其实我们不需要显式写出字母，只要约定好26个位置就可以了。那么是一个列表？不全对。</p>
-<div id="8e757168" class="cell" data-execution_count="4">
+<div id="290dd61c" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
@@ -430,7 +440,7 @@ nums[i] + nums[j] = target,\quad i \ne j
 <p>这样就可以在只遍历一次的情形下进行相邻数的聚类了。最后再统计一下各堆数量，得出最多的那一个。不过我并不知道上面的想法如何实现，也不知道时间复杂度，最重要的是好像在这套想法里看不到键在哪里（笑</p>
 <p>我一直尝试想从信息的角度分析一个问题的实现和时间复杂度之间的关系。题目要求O(n)，说明排序的信息有的是冗余的，对我们解答这道题的要求没有益处。特别的，这些题要求得到的东西中信息也是有限的，例如只需要得出最长连续序列的长度，而不是序列本身。我不知道这种想法是不是正确的或者有意义的。</p>
 <p>让我们看看答案。</p>
-<div id="cb42f5c0" class="cell" data-execution_count="5">
+<div id="4bc93115" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> longestConsecutive(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        num_set <span class="op">=</span> <span class="bu">set</span>(nums)</span>
@@ -460,7 +470,7 @@ nums[i] + nums[j] = target,\quad i \ne j
 <p>所以总访问次数必定不超过2n，所以是O(n)的时间复杂度。（注意啊不是说非得只能访问n次，O(n)不是n啊）</p>
 <p>我觉得题解的关键就是无序查询的便利性以及开头元素和后续元素的一次性对应。</p>
 <p>除了向右延伸的解法以外，还真有一种两边延伸的解法。关键在于，并不需要像我们最开始想的维护堆元素本身，而可以直接去维护长度（准确来说是维护边界元素及其序列长度）。</p>
-<div id="cfafa4fc" class="cell" data-execution_count="6">
+<div id="a9bdcaaa" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> longestConsecutive(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        length <span class="op">=</span> {}</span>
@@ -540,7 +550,7 @@ nums[i] + nums[j] = target,\quad i \ne j
 <li>前 k 个位置已经是按顺序排好的非零元素</li>
 <li>后面全部填 0</li>
 </ul>
-<div id="ffccfd16" class="cell" data-execution_count="7">
+<div id="fd400560" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> moveZeroes(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        k <span class="op">=</span> <span class="dv">0</span></span>
@@ -558,7 +568,7 @@ nums[i] + nums[j] = target,\quad i \ne j
 <p>不过，双指针还没出场呢。</p>
 <p>上面这个方法有一个小问题是，如果前面从来都没有过0，那么这些非0数就不需要挪动位置啊，这些重新赋值的操作对它们而言是无意义的。例如<code>nums=[1,2,3,0,4]</code>，前三个数不用动，不需要再<code>nums[2]=3</code>了。就好像你让本来就不用换位置的小朋友先站起来再坐下一样。</p>
 <p>既然这样，我们就额外维护一个指针，它指向下一个非零元素应该放的位置。在遍历到非0元素时，如果它和遍历指针指向同一个位置，那就啥也不干（已经排对了）。如果指向不同，就<strong>交换</strong>这两个元素。</p>
-<div id="0b540912" class="cell" data-execution_count="8">
+<div id="413ffbda" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> moveZeroes(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        i <span class="op">=</span> <span class="dv">0</span></span>
@@ -617,7 +627,7 @@ nums[i] + nums[j] = target,\quad i \ne j
 <p>其实这题贪心的思路并不是局部最优导向全局最优，而是反过来进行剪枝。</p>
 <p>试想两条线取最左和最右。现在尝试移动边界，宽度一定更小了，换取的是可能找到更长的最小边的机会。</p>
 <p>对于不等长的两条边界，应当如何移动呢？移动长的那条边，对增大预期面积没有帮助。应当只移动短的那条边，还有增大面积的机会。</p>
-<div id="d1750636" class="cell" data-execution_count="9">
+<div id="5971b63f" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> maxArea(<span class="va">self</span>, height: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        l, r <span class="op">=</span> <span class="dv">0</span>, <span class="bu">len</span>(height) <span class="op">-</span> <span class="dv">1</span></span>
@@ -655,7 +665,7 @@ nums[i] + nums[j] + nums[k] = 0
 <p>暴力<span class="math inline">\(C_n^3\)</span>吗，有点意思。</p>
 <p>虽然三数之和和两数之和很像，但我感觉没什么可以借鉴的。毕竟两数之和保证这样的数对唯一，但这里的三元组可以有很多个；就算我们先第一次遍历把每个数作为-target一次，寻找其余两个数也不太像两数之和。</p>
 <p>嗯……a+b=-c的思路好像确实是对的。但对两数之和的借鉴就到此为止了。实际上，在固定了c去寻找a和b的过程中，有一个实现难度是被我们忽视的，那就是三元组的值的组合不能重复。在我们按下标遍历时，会出现两个不同下标元素值相同的情况，容易得到重复结果。去重才是这道题最难的地方。</p>
-<div id="83eed1f0" class="cell" data-execution_count="10">
+<div id="0ff2f9a3" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> threeSum(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]]:</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        nums.sort()</span>
@@ -705,7 +715,7 @@ nums[i] + nums[j] + nums[k] = 0
 <p>一方面，在枚举<code>nums[i]</code>时，如果它和<code>nums[i-1]</code>一样，得到的三元组也一样，所以直接跳过。</p>
 <p>另一方面，对于和刚好的情况，不能仅仅左右都只移动1格了事。如果移动到了相等的数，就继续移动，实现跳过的效果。</p>
 <p>同时还有一个小细节。</p>
-<div id="660db551" class="cell" data-execution_count="11">
+<div id="672a624c" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> nums[i] <span class="op">&gt;</span> <span class="dv">0</span>:</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -717,7 +727,7 @@ nums[i] + nums[j] + nums[k] = 0
 <p>给你一个数组 height，每个数表示一根柱子的高度。</p>
 <p>下雨后，低的地方会积水，求总共能接多少水。</p>
 <p>例如对于<code>height = [0,1,0,2,1,0,1,3,2,1,2,1]</code>，图示如下。</p>
-<div id="92212f7f" class="cell" data-execution_count="12">
+<div id="6e76ac07" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -741,7 +751,7 @@ nums[i] + nums[j] + nums[k] = 0
 <p>这样我们就得到了所有的边界，然后将相邻两个代入求面积再相加即可。</p>
 <p>问题是我们并不清楚这样的时间复杂度。首先我们要判断全局最大值，然后ij从两边往中间遍历一次，面积求和过程总共再遍历一次。应该也是O(n)。不过这样的下标操作还是有些繁琐了，在编写实际代码层面很可能出错或者没有妥善处理极端情况。</p>
 <p>g老师给我写了一个。我这个想法好像真没错，虽然不是标准解。空间复杂度也是O(n)。就是代码复杂度，有点高。</p>
-<div id="b58c502c" class="cell" data-execution_count="13">
+<div id="4abc571e" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> trap(<span class="va">self</span>, height: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(height)</span>
@@ -815,7 +825,7 @@ nums[i] + nums[j] + nums[k] = 0
 <p><span class="math display">\[
 \min(left\_max[i], right\_max[i]) - height[i]
 \]</span></p>
-<div id="5c247f1e" class="cell" data-execution_count="14">
+<div id="c852aad1" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> trap(<span class="va">self</span>, height: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(height)</span>
@@ -844,7 +854,7 @@ nums[i] + nums[j] + nums[k] = 0
 <li><code>right_max</code> 表示当前从右到左见过的最高柱子</li>
 </ul>
 <p>当前该算哪一边的水量？谁那边的最大挡板更小，就先算谁，因为某位置的水量取决于左右挡板的较小值。</p>
-<div id="0eff758a" class="cell" data-execution_count="15">
+<div id="281ec025" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> trap(<span class="va">self</span>, height: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        l, r <span class="op">=</span> <span class="dv">0</span>, <span class="bu">len</span>(height) <span class="op">-</span> <span class="dv">1</span></span>
@@ -868,7 +878,7 @@ nums[i] + nums[j] + nums[k] = 0
 <span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ans</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>以及还有一种查找边界的“单调栈”法。先按下不表。</p>
-<div id="ff935dac" class="cell" data-execution_count="16">
+<div id="d8d58ef1" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> trap(<span class="va">self</span>, height: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        res <span class="op">=</span> <span class="dv">0</span></span>
@@ -913,7 +923,7 @@ nums[i] + nums[j] + nums[k] = 0
 <li>如果新字符没出现过，窗口继续扩大</li>
 <li>如果新字符重复了，就不断移动 l，把左边字符移出集合，直到不重复为止</li>
 </ul>
-<div id="71da4895" class="cell" data-execution_count="17">
+<div id="f9fd1db5" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> lengthOfLongestSubstring(<span class="va">self</span>, s: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        seen <span class="op">=</span> <span class="bu">set</span>()</span>
@@ -937,7 +947,7 @@ nums[i] + nums[j] + nums[k] = 0
 <p>所以总的时间复杂度是O(n)。空间复杂度是O(k)，k是不同的字符数，最坏的情况是O(n)。</p>
 <p>一个常见的优化是使用哈希表记录字符最后的出现位置。</p>
 <p>如果当前字符 s[r] 之前出现过，而且它上一次出现位置在当前窗口里，那么左指针可以直接跳到“上次出现位置 + 1”，不必一个个删。</p>
-<div id="57ff3c58" class="cell" data-execution_count="18">
+<div id="db6b5be2" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> lengthOfLongestSubstring(<span class="va">self</span>, s: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        last <span class="op">=</span> {}</span>
@@ -989,7 +999,7 @@ nums[i] + nums[j] + nums[k] = 0
 <p><strong>题解</strong></p>
 <p>由于p给定，区间长度是固定的，l和r只能同步移动。字母异位词的题中我们知道了应该如何操作字符串，对于每个新区间我们都需要sort和join一次吗？同时区间滑动我也想不到除了遍历以外的方法。如果一个区间是符合要求的，那么可以统计进入和离开区间的字符情况，只要相等新的区间也符合要求。</p>
 <p>如果我们有对于字符的高效的计数方案，那么新区间的字符计数只要特定地+1和-1就可以了。回顾字母异位词的题，可以用约定好的定序列表实现这一点。</p>
-<div id="992c82d3" class="cell" data-execution_count="19">
+<div id="587df273" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> findAnagrams(<span class="va">self</span>, s: <span class="bu">str</span>, p: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        n, m <span class="op">=</span> <span class="bu">len</span>(s), <span class="bu">len</span>(p)</span>
@@ -1097,7 +1107,7 @@ pre[r] - pre[l-1]
 <li>把这些次数加到答案里</li>
 <li>再把当前前缀和 pre 记录进哈希表</li>
 </ol>
-<div id="57ea5410" class="cell" data-execution_count="20">
+<div id="dc89b368" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> subarraySum(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>], k: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>        cnt <span class="op">=</span> {<span class="dv">0</span>: <span class="dv">1</span>}</span>
@@ -1154,7 +1164,7 @@ pre[r] - pre[l-1]
 <li>新元素进来时，把队尾那些比它小的都删掉，因为它们以后不可能成为最大值了</li>
 </ul>
 <p>这就是单调递减队列。进一步地，队列当中应该存的是下标，因为我们需要通过下标来判断有没有滑出窗口。至于值比较的时候，拿着下标去原数组里面查就可以了。拿着下标查值是容易的，这里可没有什么反函数啊。</p>
-<div id="cba4b648" class="cell" data-execution_count="21">
+<div id="d2d061b1" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> deque</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
@@ -1221,7 +1231,7 @@ pre[r] - pre[l-1]
 </ul>
 <p>这道题最关键的判断是怎样叫做覆盖了t。对于t，有一个计数表need来记录每种字符需要多少个；对于窗口，也有一个计数表window。然后我们每次比较need和window就好了。吗？</p>
 <p>可以通过增量比较的方式来避免全量比较。如果need中有3种字符要求，我们就设定<code>required = 3</code>。再定义一个<code>formed</code>，每当一种字符要求被满足的时候就让它自加<code>formed += 1</code>，那么只要<code>formed == required</code>就完成了覆盖任务。这是个重要的技巧。</p>
-<div id="a50e696b" class="cell" data-execution_count="22">
+<div id="ee2c4ded" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter, defaultdict</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
@@ -1274,7 +1284,7 @@ pre[r] - pre[l-1]
 <div class="callout-body-container">
 <p>Counter是collections模块里面的一个计数工具，是一个会自动数数的哈希表。</p>
 <p>例如对于</p>
-<div id="17fc93a0" class="cell" data-execution_count="23">
+<div id="f40619ff" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="st">"AABC"</span></span>
@@ -1371,7 +1381,7 @@ pre[r] - pre[l-1]
 <p>不对。因为一个全局最小的前缀和配上它后面最大的前缀和，不一定有一个很前面的局部最小前缀和以及某个全局最小前缀和之前的最大前缀和的搭配来得更大。我们并不能保证这一点。</p>
 <p>那么我们应该沿着下标来更新这个答案？一次性选对的思路往往是不可靠的，在线维护一般更加可取。</p>
 <p>我们可以尝试反过来想，对于每个下标，用它的前缀和减去它之前最小的前缀和，遍历一遍不断更新。</p>
-<div id="5e98b867" class="cell" data-execution_count="24">
+<div id="ae611774" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> maxSubArray(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>        prefix <span class="op">=</span> <span class="dv">0</span></span>
@@ -1394,7 +1404,7 @@ pre[r] - pre[l-1]
 </ol>
 <p>综合一下状态转移应该是：<code>dp[i] = max(nums[i], dp[i-1] + nums[i])</code></p>
 <p>进一步地，我们发现<code>dp[i]</code>只依赖于<code>dp[i-1]</code>，也就是说是马尔可夫的。那完全不用开整个数组，用一个变量记录一下就好了。</p>
-<div id="31404c6e" class="cell" data-execution_count="25">
+<div id="ab0809fc" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> maxSubArray(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        cur <span class="op">=</span> nums[<span class="dv">0</span>]</span>
@@ -1440,7 +1450,7 @@ pre[r] - pre[l-1]
 <li><p>横跨中间 = 左区间最大后缀 + 右区间最大前缀</p></li>
 </ul>
 <p>所以：<code>mSum \= max(L.mSum, R.mSum, L.rSum + R.lSum)</code>。这是最漂亮的一句。</p>
-<div id="f47972da" class="cell" data-execution_count="26">
+<div id="9d312bb8" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Status:</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, lSum: <span class="bu">int</span>, rSum: <span class="bu">int</span>, mSum: <span class="bu">int</span>, iSum: <span class="bu">int</span>):</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.lSum <span class="op">=</span> lSum</span>
@@ -1490,7 +1500,7 @@ pre[r] - pre[l-1]
 <li>如果重叠，只需要更新右端点，<code>cur_end = max(cur_end, end)</code></li>
 <li>如果不重叠，说明新区间和待合并区间断了，由于左端点的有序性，这说明待合并区间已经合并完成，可以加入答案了。新区间成为新的待合并区间。</li>
 </ul>
-<div id="3312555b" class="cell" data-execution_count="27">
+<div id="62064ab5" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> merge(<span class="va">self</span>, intervals: <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]]) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]]:</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>        intervals.sort(key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">0</span>])</span>
@@ -1516,7 +1526,7 @@ pre[r] - pre[l-1]
 <p><strong>题解</strong></p>
 <p>首先肯定要取模啊。假设长度为n，有效移动量应该是<code>m = k mod n</code>。哦python里面应该是<code>m = k % n</code>。</p>
 <p>第一步，<code>double_nums = nums * 2</code>。第二步，<code>ans = double_nums[n - m : 2 * n - m]</code>。（注意切片右端点不要写错）</p>
-<div id="27b91267" class="cell" data-execution_count="28">
+<div id="a8fd82d4" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> rotate(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>], k: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(nums)</span>
@@ -1540,7 +1550,7 @@ pre[r] - pre[l-1]
 <li>反转前<code>k = 3</code>个：<code>[5,6,7,4,3,2,1]</code></li>
 <li>反转后<code>n - k = 4</code>个：<code>[5,6,7,1,2,3,4]</code></li>
 </ol>
-<div id="001abc60" class="cell" data-execution_count="29">
+<div id="24e5dfd5" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> rotate(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>], k: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(nums)</span>
@@ -1558,7 +1568,7 @@ pre[r] - pre[l-1]
 </div>
 <p><code>reverse</code>函数会交换左右指针指向的元素并让左右指针相向移动，这样的交换会执行约<code>n/2</code>次，所以时间复杂度是O(n)。</p>
 <p>还有一种环状替换法，把元素一个一个搬到目标位置，同时为了避免覆盖丢失信息，还要一边搬一边保存被覆盖的值。比较麻烦，这里只放代码，虽然时间复杂度也是O(n)，但不如反转法好写。</p>
-<div id="ecdc51b2" class="cell" data-execution_count="30">
+<div id="1e698677" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> rotate(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>], k: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(nums)</span>
@@ -1589,7 +1599,7 @@ pre[r] - pre[l-1]
 <p><strong>题解</strong></p>
 <p>不能除意味着只能乘了。一个想法是对于每个下标，都得到从最左边开始乘到它、最右边开始乘到它这两个乘积，也就是前缀积和后缀积？然后对于每个下标i，<code>answer[i] = pre[i-1] * suf[i+1]</code>。这样遍历三遍还是O(n)。</p>
 <p>那干脆把数组定义成前缀不包含自己的乘积就好了，也不用担心边界问题。</p>
-<div id="29aa6386" class="cell" data-execution_count="31">
+<div id="590f10de" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> productExceptSelf(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(nums)</span>
@@ -1611,7 +1621,7 @@ pre[r] - pre[l-1]
 <p>它的时间复杂度和空间复杂度都是O(n)。</p>
 <p>进一步地，如果输出数组ans不视为额外空间，我们还可以优化空间复杂度为O(1)。</p>
 <p>我们可以把ans用来存放左边乘积，然后在从右往左算后缀积的时候，一边算一边就可以替换ans里的值了。</p>
-<div id="4e180039" class="cell" data-execution_count="32">
+<div id="2cf87e04" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> productExceptSelf(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(nums)</span>
@@ -1639,7 +1649,7 @@ pre[r] - pre[l-1]
 <p>经过一次遍历，我们可以知道最小的正整数是多少，但如果1在数组内，我们这么做就无意义了。考虑数组为1开始的正整数列但去掉了一个较大值，我们要怎么设计需要维护的变量呢？更特殊地，如果数组就是从1到n，那么答案就是n+1。</p>
 <p>基于这个特殊例子，我们能知道ans的范围就是[1, n+1]。</p>
 <p>本题的一个关键想法是，既然ans有这样的范围，如果我们能把数组往<code>nums[i] = i + 1</code>的形式整理，那么只要哪一位i上不满足这样的形式，就说明i+1缺失了。</p>
-<div id="97582be5" class="cell" data-execution_count="33">
+<div id="f52aadf9" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> firstMissingPositive(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(nums)</span>
@@ -1711,7 +1721,7 @@ pre[r] - pre[l-1]
 <li>用一个变量 <code>first_col_zero</code> 记录第一列是否原本有 0</li>
 </ul>
 <p>然后中间区域 <code>(1..m-1, 1..n-1)</code> 再放心地用第一行和第一列做标记。</p>
-<div id="c6dcf317" class="cell" data-execution_count="34">
+<div id="6a810623" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> setZeroes(<span class="va">self</span>, matrix: <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]]) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>        m, n <span class="op">=</span> <span class="bu">len</span>(matrix), <span class="bu">len</span>(matrix[<span class="dv">0</span>])</span>
@@ -1747,7 +1757,7 @@ pre[r] - pre[l-1]
 <h2 class="anchored" data-anchor-id="螺旋矩阵">54.螺旋矩阵</h2>
 <p>给一个 m x n 的矩阵，按 顺时针螺旋顺序 返回所有元素。</p>
 <p>例如：</p>
-<div id="278cc648" class="cell" data-execution_count="35">
+<div id="6cba94a1" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>matrix <span class="op">=</span> [</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>],</span>
@@ -1761,7 +1771,7 @@ pre[r] - pre[l-1]
 </blockquote>
 <p>啊这道题还有什么方便的做法吗？我感觉难点在于判断什么时候算是一层结束，从哪里开始下一层。外面一圈剥完以后就退化成更小的矩阵情况了。</p>
 <p>是的这道题本质就是边界收缩加边界控制。有一说一边界这种东西还是挺让人头疼的。</p>
-<div id="40d9e958" class="cell" data-execution_count="36">
+<div id="c2ed7cc4" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> spiralOrder(<span class="va">self</span>, matrix: <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]]) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>        top, bottom <span class="op">=</span> <span class="dv">0</span>, <span class="bu">len</span>(matrix) <span class="op">-</span> <span class="dv">1</span></span>
@@ -1791,11 +1801,11 @@ pre[r] - pre[l-1]
 </div>
 <p>时间复杂度是O(mn)，空间复杂度是O(1)。</p>
 <p>它的主体就是</p>
-<pre><code>while 还有没处理的矩形:
-    取上边
-    取右边
-    如果还有没处理的行，取下边
-    如果还有没处理的列，取左边</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> 还有没处理的矩形:</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    取上边</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    取右边</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    如果还有没处理的行，取下边</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    如果还有没处理的列，取左边</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="旋转图像" class="level2">
 <h2 class="anchored" data-anchor-id="旋转图像">48.旋转图像</h2>
@@ -1805,7 +1815,7 @@ pre[r] - pre[l-1]
 <li>不能开另一个同样大小的矩阵</li>
 </ul>
 <p>例如：</p>
-<div id="03c89b08" class="cell" data-execution_count="37">
+<div id="beb7d88b" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>[</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>],</span>
@@ -1813,7 +1823,7 @@ pre[r] - pre[l-1]
 <span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>旋转为：</p>
-<div id="87be147f" class="cell" data-execution_count="38">
+<div id="a71f3999" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>[</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">1</span>],</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">8</span>,<span class="dv">5</span>,<span class="dv">2</span>],</span>
@@ -1823,14 +1833,14 @@ pre[r] - pre[l-1]
 <p><strong>题解</strong></p>
 <p>不能单开那只能是交换了。而且应该是四个位置为一组进行轮换。</p>
 <p>从数学角度，<code>(i, j)</code>会去到<code>(j, n - 1 - i)</code>。那么四个位置一组就应该是：</p>
-<div id="3f4159e3" class="cell" data-execution_count="39">
+<div id="a42e2b58" class="cell" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>(i, j)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>(j, n<span class="op">-</span><span class="dv">1</span><span class="op">-</span>i)</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>(n<span class="op">-</span><span class="dv">1</span><span class="op">-</span>i, n<span class="op">-</span><span class="dv">1</span><span class="op">-</span>j)</span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>(n<span class="op">-</span><span class="dv">1</span><span class="op">-</span>j, i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>轮换即可。</p>
-<div id="99988f71" class="cell" data-execution_count="40">
+<div id="9315a559" class="cell" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> rotate(<span class="va">self</span>, matrix: <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]]) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(matrix)</span>
@@ -1849,7 +1859,7 @@ pre[r] - pre[l-1]
 <li>转置。<code>(i, j) -&gt; (j, i)</code></li>
 <li>在每一行中，左右翻转。<code>(j, i) -&gt; (j, n - 1 -i)</code></li>
 </ul>
-<div id="f8f62e77" class="cell" data-execution_count="41">
+<div id="aba15f18" class="cell" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> rotate(<span class="va">self</span>, matrix: <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]]) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(matrix)</span>
@@ -1875,7 +1885,7 @@ pre[r] - pre[l-1]
 </ul>
 <p>判断 target 是否在矩阵里。</p>
 <p>例如：</p>
-<div id="8a5e3b45" class="cell" data-execution_count="42">
+<div id="0049de3b" class="cell" data-execution_count="42">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>matrix <span class="op">=</span> [</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">15</span>],</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">12</span>,<span class="dv">19</span>],</span>
@@ -1890,7 +1900,7 @@ pre[r] - pre[l-1]
 <p>特别地，如果我们从左上角最小开始搜索，似乎依然要维护相当多数量的路径。如果当前节点比target小，那target可能在下面可能在右边。</p>
 <p>这道题正确的起点是右上角或者左下角。以右上角为例，如果当前节点比target小，由于越往左越小，target只能在下面；而如果当前节点比target大，由于越往下越大，只能往左走了。矩阵特殊的性质决定了搜索路径的唯一性。</p>
 <p>这根本就不是一个树搜索问题。这是一个二维单调性剪枝。</p>
-<div id="bfcf04fa" class="cell" data-execution_count="43">
+<div id="d75f304a" class="cell" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> searchMatrix(<span class="va">self</span>, matrix: <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]], target: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>        m, n <span class="op">=</span> <span class="bu">len</span>(matrix), <span class="bu">len</span>(matrix[<span class="dv">0</span>])</span>
@@ -1911,8 +1921,620 @@ pre[r] - pre[l-1]
 </section>
 <section id="链表" class="level1">
 <h1>链表</h1>
+<section id="相交链表" class="level2">
+<h2 class="anchored" data-anchor-id="相交链表">160.相交链表</h2>
+<p>给两个单链表头节点 headA 和 headB，找出它们相交的起始节点。</p>
+<p>如果不相交，返回 null。</p>
+<p>这里“相交”指的是：</p>
+<ul>
+<li>从某个节点开始</li>
+<li>两条链表后面完全共享同一段尾巴</li>
+</ul>
+<p>所以相交之后的节点，不只是值一样，而是内存里同一个节点。</p>
+<p><strong>题解</strong></p>
+<blockquote class="blockquote">
+<p>我有一个更好的问题，什么是链表？？？</p>
+</blockquote>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>链表是一种用节点串起来的数据结构。每个节点当中，存放着值以及下一个节点在哪里。</p>
+<p>链表和数组有很大不同。数组元素在物理上紧挨着放，能用下标直接访问。而链表不要求内存连续，通过指针/引用相连，在已知位置附近插入、删除更自然。但链表压根就没有下标，所以不擅长随机访问。</p>
+<p>访问链表通常是拿到头节点以后遍历：</p>
+<div id="f32df82e" class="cell" data-execution_count="44">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>cur <span class="op">=</span> head</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> cur:</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    cur <span class="op">=</span> cur.<span class="bu">next</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>标准链表的最后一个节点向后指向<code>None</code>。因此走完最后一个节点遍历就会终止。</p>
+</div>
+</div>
+</div>
+<p>现在的问题是，我应该怎么去比较两个链表呢。链表的节点是可以互相比较的吗？</p>
+<p>是的。这里需要开始逐渐领会<strong>对象</strong>的概念了。对象是一块带内部结构的东西，不仅仅是值本身。两个节点完全相同，指的是值和引用指向都相同。</p>
+<p>由于这道题是单链表，每个节点只指向一个节点，那么当两个链表有一个节点完全相同的时候，它们后面的节点也必然是相同的！（其实双链表这种一个next指针一个prev指针的也是一样的。）所以这里的相交不同于几何直观，它并不是交叉。</p>
+<p>既然节点是一个对象，那就可以放到集合里面了。</p>
+<div id="7cf562f0" class="cell" data-execution_count="45">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> getIntersectionNode(<span class="va">self</span>, headA: ListNode, headB: ListNode) <span class="op">-&gt;</span> Optional[ListNode]:</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>        seen <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>        cur <span class="op">=</span> headA</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> cur:</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>            seen.add(cur)</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>            cur <span class="op">=</span> cur.<span class="bu">next</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>        cur <span class="op">=</span> headB</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> cur:</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> cur <span class="kw">in</span> seen:</span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> cur</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>            cur <span class="op">=</span> cur.<span class="bu">next</span></span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>设链表A长度为m，链表B长度为n，时间复杂度是O(m+n)，空间复杂度是O(m)。</p>
+<p>下面又是经典的O(1)额外空间进阶时间。</p>
+<p>一个想法是，假设m&gt;n，那么先让链表A走过m-n，那么两个链表剩余长度是一样的，就可以同步走的时候判断节点是否相同了。需要注意的是，链表的长度只能通过遍历时计数得到。</p>
+<div id="510ea7d4" class="cell" data-execution_count="46">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> getIntersectionNode(<span class="va">self</span>, headA: ListNode, headB: ListNode) <span class="op">-&gt;</span> Optional[ListNode]:</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> get_len(head):</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>            length <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>            cur <span class="op">=</span> head</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> cur:</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>                length <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>                cur <span class="op">=</span> cur.<span class="bu">next</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> length</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>        lenA <span class="op">=</span> get_len(headA)</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>        lenB <span class="op">=</span> get_len(headB)</span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>        a, b <span class="op">=</span> headA, headB</span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> lenA <span class="op">&gt;</span> lenB:</span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(lenA <span class="op">-</span> lenB):</span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>                a <span class="op">=</span> a.<span class="bu">next</span></span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(lenB <span class="op">-</span> lenA):</span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>                b <span class="op">=</span> b.<span class="bu">next</span></span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> a <span class="kw">and</span> b:</span>
+<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> a <span class="op">==</span> b:</span>
+<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> a</span>
+<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a>            a <span class="op">=</span> a.<span class="bu">next</span></span>
+<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a>            b <span class="op">=</span> b.<span class="bu">next</span></span>
+<span id="cb46-28"><a href="#cb46-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-29"><a href="#cb46-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>这已经符合要求了。</p>
+<p>最经典的做法是<strong>双指针互换起点</strong>。</p>
+<div id="c405bf6d" class="cell" data-execution_count="47">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> getIntersectionNode(<span class="va">self</span>, headA: ListNode, headB: ListNode) <span class="op">-&gt;</span> Optional[ListNode]:</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>        a, b <span class="op">=</span> headA, headB</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> a <span class="op">!=</span> b:</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>            a <span class="op">=</span> a.<span class="bu">next</span> <span class="cf">if</span> a <span class="cf">else</span> headB</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>            b <span class="op">=</span> b.<span class="bu">next</span> <span class="cf">if</span> b <span class="cf">else</span> headA</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>我们假设链表A的独有前缀长度为x，B的独有前缀长度为y，公共尾部长度为z。</p>
+<p>由于指针a的行为是把链表A走完以后跳到链表B的开头重新走，因此不考虑相遇，总长是<code>x+z+y+z</code>。指针b则是<code>y+z+x+z</code>。</p>
+<p>如果两个指针在第一次走到公共尾部的时候就相遇了，确实会提前终止。如果没有相遇，那么在第二次走到公共尾部之前的路程，都是<code>x+y+z</code>！因此它们要么同时走到公共尾部的起始处，要么就都同时走到<code>None</code>终止了。反正都达到了我们的目的。</p>
+<p>总之，我们可以不显式地求长度差来对齐，而是可以通过路径重定向来使二者自动对齐，从而隐式地解决了对齐问题。</p>
+</section>
+<section id="反转链表" class="level2">
+<h2 class="anchored" data-anchor-id="反转链表">206.反转链表</h2>
+<p>给一个单链表头节点 head，把整条链表反转后返回新的头节点。</p>
+<p>例如从<code>1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5 -&gt; None</code>，反转后变为<code>5 -&gt; 4 -&gt; 3 -&gt; 2 -&gt; 1 -&gt; None</code>。</p>
+<p><strong>题解</strong></p>
+<p>说是返回头节点，其实要把整个链表的指针都改了。</p>
+<p>先讲迭代法。</p>
+<p>我们一路往后走，每到一个节点，就把它的<code>next</code>改成指向上一个节点。</p>
+<p>所以要维护三个东西：</p>
+<ul>
+<li><code>prev</code>：前一个节点</li>
+<li><code>cur</code>：当前节点</li>
+<li><code>nxt</code>：提前保存的下一个节点</li>
+</ul>
+<p>我们需要保存<code>nxt</code>，是因为如果我们直接修改<code>cur.next = prev</code>，那我们就不知道原本下一个节点要去往哪里了。</p>
+<p>等一下！这太诡异了。<code>cur.next = prev</code>不是简单的赋值操作，而是实打实修改了<code>cur</code>引用的那个节点的指向！在遍历链表的时候，<code>cur</code>引用的节点一直在变，而我们看似在修改<code>cur</code>，实际上是在修改那个实在的对象。这里一定要想明白对象和变量之间的引用关系。而这种修改不影响<code>cur</code>的遍历，是因为我们保存了<code>nxt</code>从而<code>cur</code>不会走错。</p>
+<div id="50f3513f" class="cell" data-execution_count="48">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> reverseList(<span class="va">self</span>, head: Optional[ListNode]) <span class="op">-&gt;</span> Optional[ListNode]:</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>        prev <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>        cur <span class="op">=</span> head</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> cur:</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>            nxt <span class="op">=</span> cur.<span class="bu">next</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>            cur.<span class="bu">next</span> <span class="op">=</span> prev</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>            prev <span class="op">=</span> cur</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>            cur <span class="op">=</span> nxt</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> prev</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>像是每一步把未处理部分的头拔下来，插到已反转部分的前面。</p>
+<p>时间复杂度O(n)，空间复杂度O(1)。</p>
+<p>再讲递归法。</p>
+<div id="f947abd4" class="cell" data-execution_count="49">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> reverseList(<span class="va">self</span>, head: Optional[ListNode]) <span class="op">-&gt;</span> Optional[ListNode]:</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> head <span class="kw">or</span> <span class="kw">not</span> head.<span class="bu">next</span>:</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> head</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>        new_head <span class="op">=</span> <span class="va">self</span>.reverseList(head.<span class="bu">next</span>)</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>        head.<span class="bu">next</span>.<span class="bu">next</span> <span class="op">=</span> head</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>        head.<span class="bu">next</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> new_head</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>好神秘啊。</p>
+<p>例如对于<code>1 -&gt; 2 -&gt; 3 -&gt; 4</code>，我们先递归去反转<code>2 -&gt; 3 -&gt; 4</code>，假设已经成功得到了<code>4 -&gt; 3 -&gt; 2</code>。</p>
+<p>这个时候当前<code>head == 1</code>，而<code>head.next == 2</code>。那么我们要做的是：</p>
+<div id="a46a1f79" class="cell" data-execution_count="50">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fl">2.</span><span class="er">next</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fl">1.</span><span class="er">next</span> <span class="op">=</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>这样整条链就成功变成了<code>4 -&gt; 3 -&gt; 2 -&gt; 1</code>。</p>
+<p>这就是下面代码在做的事情：</p>
+<div id="259dc340" class="cell" data-execution_count="51">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>head.<span class="bu">next</span>.<span class="bu">next</span> <span class="op">=</span> head</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>head.<span class="bu">next</span> <span class="op">=</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>递归的终止条件则是</p>
+<div id="3191cf44" class="cell" data-execution_count="52">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> head <span class="kw">or</span> <span class="kw">not</span> head.<span class="bu">next</span>:</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> head</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>含义是：</p>
+<ul>
+<li>空链表，直接返回</li>
+<li>只有一个节点，也不用反转，直接返回</li>
+</ul>
+<p>这就是递归的最小子问题。</p>
+<p>时间复杂度为O(n)。由于递归调用栈，空间复杂度为O(n)。</p>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>正好来说说<strong>迭代</strong>和<strong>递归</strong>。</p>
+<p>迭代就是不用函数反复调用自己，而是靠循环反复推进。</p>
+<p>一般是</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> solve(...):</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    初始化状态</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> 还没结束:</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>        处理当前状态</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>        更新状态</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> 答案</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>或者</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> 某个序列:</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    做事</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>所以迭代本质上是：</p>
+<ul>
+<li>状态在循环变量里</li>
+<li>流程推进由你手动控制</li>
+</ul>
+<p>递归则是一个函数在解决问题时，调用自己去解决更小的同类问题。</p>
+<p>最经典的递归思想不是“重复”，而是<strong>“把大问题拆成一个更小的同类问题”</strong>。</p>
+<p>一般是</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> solve(problem):</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> 最小子问题:</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> 直接答案</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    子答案 <span class="op">=</span> solve(更小问题)</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>    用子答案构造当前答案</span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> 当前答案</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>所以递归一定有两部分：</p>
+<ol type="1">
+<li>终止条件：也叫 base case，最小子问题直接返回，不再继续递归</li>
+<li>递归关系：当前问题如何化成更小的同类问题</li>
+</ol>
+<p>例如使用递归求解1到n的和，就不会像迭代法一样在遍历中自加，而是：</p>
+<div id="c17b793b" class="cell" data-execution_count="53">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sum_n(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n <span class="op">+</span> sum_n(n <span class="op">-</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>迭代和递归的核心区别是谁来维护状态。</p>
+<p>迭代是由操作者来显式维护状态，所有状态都写在变量里面我们能看得到。</p>
+<p>而递归则是由<strong>调用栈</strong>来隐式维护，能够自动保存中间状态。所以递归本质上是把一部分状态管理交给了函数调用机制。</p>
+<p>程序会一层层记住：</p>
+<ul>
+<li>当前在哪一层</li>
+<li>这一层的局部变量是什么</li>
+<li>递归返回后还要干什么</li>
+</ul>
+<p>然后最深层返回后，一层层往回退。</p>
+<p>递归有两种典型风格：</p>
+<ol type="1">
+<li><p>返回值型递归</p>
+<p>子问题返回答案，当前层再加工。这个最常见。</p></li>
+<li><p>副作用型递归</p>
+<p>递归过程中直接修改外部结构，不一定靠返回值传递全部信息。</p>
+<p>比如树遍历、链表重接，有时候是：</p>
+<ul>
+<li>递归只是为了走到某处</li>
+<li>真实效果体现在对象结构被改了</li>
+</ul></li>
+</ol>
+<p>优先选迭代的时候：</p>
+<ul>
+<li>过程是线性的</li>
+<li>你能清楚写出状态转移</li>
+<li>希望节省空间</li>
+<li>递归会太深或不好调试</li>
+</ul>
+<p>优先选递归的时候：</p>
+<ul>
+<li>问题天然能拆成更小的子问题</li>
+<li>结构天然递归，比如树</li>
+<li>写法会非常短、非常清晰</li>
+<li>深度不大，不担心栈溢出</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="回文链表" class="level2">
+<h2 class="anchored" data-anchor-id="回文链表">234.回文链表</h2>
+<p>给你一个单链表的头节点 head，判断这个链表是不是回文。</p>
+<p>回文的意思就是：</p>
+<ul>
+<li>从前往后读一遍</li>
+<li>从后往前读一遍</li>
+</ul>
+<p>结果相同。</p>
+<p>比如：</p>
+<ul>
+<li>[1,2,2,1] 是回文</li>
+<li>[1,2] 不是回文</li>
+</ul>
+<p><strong>题解</strong></p>
+<p>不管空间复杂度的话我们可以拿一个东西存放节点的值再比较。那不就是数组吗，遍历链表的时候往数组里append，最后看看它等不等于它的reverse。</p>
+<div id="09343813" class="cell" data-execution_count="54">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> isPalindrome(<span class="va">self</span>, head: Optional[ListNode]) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>        vals <span class="op">=</span> []</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>        cur <span class="op">=</span> head</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> cur:</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>            vals.append(cur.val)</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>            cur <span class="op">=</span> cur.<span class="bu">next</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> vals <span class="op">==</span> vals[::<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>经典时间复杂度和空间复杂度都是O(n)。</p>
+<p>下面也是经典空间复杂度O(1)的做法。</p>
+<p>回文的思想先天和反转很接近。如果我们可以反转后半段链表来和前半段比较就好了；但因为没有太多额外空间，怎么控制时序就是关键问题。</p>
+<p>我该怎么样拿到中点或者说后半段的开头呢？</p>
+<p>我们使用快慢指针：</p>
+<ul>
+<li><code>slow</code>一次走一步</li>
+<li><code>fast</code>一次走两步</li>
+</ul>
+<p>当<code>fast</code>到尾部时，<code>slow</code>就在中间附近。</p>
+<blockquote class="blockquote">
+<p>啊？</p>
+</blockquote>
+<div id="3d28305d" class="cell" data-execution_count="55">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> isPalindrome(<span class="va">self</span>, head: Optional[ListNode]) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> head <span class="kw">or</span> <span class="kw">not</span> head.<span class="bu">next</span>:</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>        slow, fast <span class="op">=</span> head, head</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 找中点</span></span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> fast <span class="kw">and</span> fast.<span class="bu">next</span>:</span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a>            slow <span class="op">=</span> slow.<span class="bu">next</span></span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a>            fast <span class="op">=</span> fast.<span class="bu">next</span>.<span class="bu">next</span></span>
+<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-13"><a href="#cb58-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 如果是奇数长度，跳过中间节点</span></span>
+<span id="cb58-14"><a href="#cb58-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> fast:</span>
+<span id="cb58-15"><a href="#cb58-15" aria-hidden="true" tabindex="-1"></a>            slow <span class="op">=</span> slow.<span class="bu">next</span></span>
+<span id="cb58-16"><a href="#cb58-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-17"><a href="#cb58-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 反转后半段</span></span>
+<span id="cb58-18"><a href="#cb58-18" aria-hidden="true" tabindex="-1"></a>        prev <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb58-19"><a href="#cb58-19" aria-hidden="true" tabindex="-1"></a>        cur <span class="op">=</span> slow</span>
+<span id="cb58-20"><a href="#cb58-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> cur:</span>
+<span id="cb58-21"><a href="#cb58-21" aria-hidden="true" tabindex="-1"></a>            nxt <span class="op">=</span> cur.<span class="bu">next</span></span>
+<span id="cb58-22"><a href="#cb58-22" aria-hidden="true" tabindex="-1"></a>            cur.<span class="bu">next</span> <span class="op">=</span> prev</span>
+<span id="cb58-23"><a href="#cb58-23" aria-hidden="true" tabindex="-1"></a>            prev <span class="op">=</span> cur</span>
+<span id="cb58-24"><a href="#cb58-24" aria-hidden="true" tabindex="-1"></a>            cur <span class="op">=</span> nxt</span>
+<span id="cb58-25"><a href="#cb58-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-26"><a href="#cb58-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 比较前半段和反转后的后半段</span></span>
+<span id="cb58-27"><a href="#cb58-27" aria-hidden="true" tabindex="-1"></a>        left <span class="op">=</span> head</span>
+<span id="cb58-28"><a href="#cb58-28" aria-hidden="true" tabindex="-1"></a>        right <span class="op">=</span> prev</span>
+<span id="cb58-29"><a href="#cb58-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> right:</span>
+<span id="cb58-30"><a href="#cb58-30" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> left.val <span class="op">!=</span> right.val:</span>
+<span id="cb58-31"><a href="#cb58-31" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb58-32"><a href="#cb58-32" aria-hidden="true" tabindex="-1"></a>            left <span class="op">=</span> left.<span class="bu">next</span></span>
+<span id="cb58-33"><a href="#cb58-33" aria-hidden="true" tabindex="-1"></a>            right <span class="op">=</span> right.<span class="bu">next</span></span>
+<span id="cb58-34"><a href="#cb58-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-35"><a href="#cb58-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>举例来说明找中点的情形。</p>
+<p>奇数时，例如</p>
+<pre><code>下标: 0  1  2  3  4
+数值: 1  2  3  2  1</code></pre>
+<p>那么</p>
+<pre><code>fast: 0 -&gt; 2 -&gt; 4
+slow: 0 -&gt; 1 -&gt; 2</code></pre>
+<p>注意在循环条件<code>while fast and fast.next</code>中我们同时检查<code>fast</code>和它的下一个节点是否存在。所以<code>fast</code>不会真的走到<code>None</code>，而是停在最后一个节点。此时<code>slow</code>正好停在中间节点。所以才有</p>
+<div id="b9ae055a" class="cell" data-execution_count="56">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> fast:</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>    slow <span class="op">=</span> slow.<span class="bu">next</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>一是奇数时的中间节点不是我们反转比较关心的对象，二是<code>fast</code>最终是否为<code>None</code>本身就指示了链表长度的奇偶性，我们无需显式判断长度！</p>
+<p>而偶数时，例如</p>
+<pre><code>下标: 0  1  2  3
+数值: 1  2  2  1</code></pre>
+<p>那么</p>
+<pre><code>fast: 0 -&gt; 2 -&gt; None
+slow: 0 -&gt; 1 -&gt; 2</code></pre>
+<p>所以偶数时<code>fast</code>走到<code>None</code>，<code>slow</code>正好走到后半段开头。</p>
+<p>紧接着反转后半段就是一个用<code>slow</code>来替代<code>head</code>的反转链表版本。</p>
+<p>然后就是左右比较了。需要注意第一这里要比较的是值，第二是右半段天然更短，只要遍历右半段即可。</p>
+</section>
+<section id="环形链表" class="level2">
+<h2 class="anchored" data-anchor-id="环形链表">141.环形链表</h2>
+<p>给你一个链表头节点 head，判断链表里有没有环。</p>
+<p>所谓有环，就是顺着 next 一直走下去，某一时刻你会再次回到之前访问过的某个节点。</p>
+<p>例如：</p>
+<pre><code>3 -&gt; 2 -&gt; 0 -&gt; -4
+     ^         |
+     |_________|</code></pre>
+<p><strong>题解</strong></p>
+<p>空间复杂度O(n)的话，大不了遍历一个节点就判断集合里有没有这个节点，有的话说明成环，没有的话往集合里面存一个；走到头就说明不成环，</p>
+<div id="9f71bb08" class="cell" data-execution_count="57">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> hasCycle(<span class="va">self</span>, head: Optional[ListNode]) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>        seen <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>        cur <span class="op">=</span> head</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> cur:</span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> cur <span class="kw">in</span> seen:</span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>            seen.add(cur)</span>
+<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a>            cur <span class="op">=</span> cur.<span class="bu">next</span></span>
+<span id="cb65-11"><a href="#cb65-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-12"><a href="#cb65-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>关于O(1)的解。一个问题是如果真成环了，这个链表都没有有限定义下的合法长度，我不能让指针一直跑。我也不知道是从哪个节点开始成环的。</p>
+<p>想法还是上一题那个走两步的<code>fast</code>和走一步的<code>slow</code>。</p>
+<ul>
+<li>如果没有环，<code>fast</code>会先走到<code>None</code>。</li>
+<li>如果成环，二者都会进入环内。但由于<code>fast</code>更快，<del>就像周曦把我套圈了一样，</del><code>fast</code>和<code>slow</code>早晚会相遇的。</li>
+</ul>
+<div id="fd79c164" class="cell" data-execution_count="58">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> hasCycle(<span class="va">self</span>, head: Optional[ListNode]) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>        slow, fast <span class="op">=</span> head, head</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> fast <span class="kw">and</span> fast.<span class="bu">next</span>:</span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>            slow <span class="op">=</span> slow.<span class="bu">next</span></span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>            fast <span class="op">=</span> fast.<span class="bu">next</span>.<span class="bu">next</span></span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> slow <span class="op">==</span> fast:</span>
+<span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb66-11"><a href="#cb66-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-12"><a href="#cb66-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>这也被称为<strong>Floyd判圈算法</strong>。</p>
+<p>时间复杂度还是值得讨论一下的。第一眼会觉得在环内<code>fast</code>追上<code>slow</code>的时间可能会很长，其实不然。</p>
+<p>设：</p>
+<ul>
+<li>a = 头节点到环入口的长度</li>
+<li>b = 环长度</li>
+</ul>
+<p>那么：</p>
+<ul>
+<li>慢指针至多走 a 步进入环</li>
+<li>进入环后，快指针每轮比慢指针多走 1 步</li>
+<li>因此最多再过 b 轮两者相遇</li>
+</ul>
+<p>故总轮数至多为a + b。而 a + b 不超过链表节点总数 n，所以时间复杂度为O(n)。</p>
+</section>
+<section id="环形链表ii" class="level2">
+<h2 class="anchored" data-anchor-id="环形链表ii">142.环形链表II</h2>
+<p>给你一个链表头节点 head：</p>
+<ul>
+<li>如果链表有环，返回入环节点</li>
+<li>如果没有环，返回 None</li>
+</ul>
+<p><strong>题解</strong></p>
+<p>O(n)的方法和前面一样，改一下输出罢了。</p>
+<div id="b9fcce67" class="cell" data-execution_count="59">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> detectCycle(<span class="va">self</span>, head: Optional[ListNode]) <span class="op">-&gt;</span> Optional[ListNode]:</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>        seen <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>        cur <span class="op">=</span> head</span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> cur:</span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> cur <span class="kw">in</span> seen:</span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> cur</span>
+<span id="cb67-9"><a href="#cb67-9" aria-hidden="true" tabindex="-1"></a>            seen.add(cur)</span>
+<span id="cb67-10"><a href="#cb67-10" aria-hidden="true" tabindex="-1"></a>            cur <span class="op">=</span> cur.<span class="bu">next</span></span>
+<span id="cb67-11"><a href="#cb67-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-12"><a href="#cb67-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>O(1)的方法。</p>
+<p>沿用刚刚快慢指针的数值设定。假设相遇点离入口处长度为r，两指针分别跑了f圈和s圈，目前迭代时间为t，t已知。那么</p>
+<p><span class="math display">\[
+\begin{cases}
+a + f b + r = 2t \\
+a + s b + r = t
+\end{cases}
+\]</span></p>
+<p>要求解a。这怎么解？</p>
+<p>慢指针可能走完完整的一圈吗？不可能。因为慢指针走完一圈长度是b，快指针追慢指针的距离不超过b，且快慢指针的相对速度和慢指针的绝对速度是一样的。那么在慢指针走完一圈以前快指针已经追上了。也就是说 <span class="math inline">\(s=0\)</span>。</p>
+<p>如果我们把t消去，就能得到 <span class="math inline">\(a = fb - r\)</span>。</p>
+<p><span class="math inline">\(f=0\)</span> 可能吗？如果是这样，那么 <span class="math inline">\(a = - r\)</span>，只有它俩都是0了。这意味着：环前长度为0，相遇处离环口长度为0，双指针运动的圈数也为0。这不就是根本没动在起始点吗，解出来t刚好也等于0。但我们的问题是第一次相遇时，起始并不算，所以这个解不合法，要舍去。</p>
+<p>也就是说f是一个正整数。那么，</p>
+<p><span class="math display">\[
+a \equiv b - r \pmod{b}, \quad a \geq b - r
+\]</span></p>
+<p>所以一个天才的想法是，在两个指针第一次相遇之后，把一个指针放到起始处，另一个不动，把它们的速度都设为1，当起始处的指针走完了a进入环口的时候，留在环内的指针刚好也走到环口，即便环内的指针可能已经兜了不少圈子了。</p>
+<p>是的，我们自始至终甚至都没用到t。</p>
+<div id="7d2bac06" class="cell" data-execution_count="60">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> detectCycle(<span class="va">self</span>, head: Optional[ListNode]) <span class="op">-&gt;</span> Optional[ListNode]:</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>        slow, fast <span class="op">=</span> head, head</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> fast <span class="kw">and</span> fast.<span class="bu">next</span>:</span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>            slow <span class="op">=</span> slow.<span class="bu">next</span></span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>            fast <span class="op">=</span> fast.<span class="bu">next</span>.<span class="bu">next</span></span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> slow <span class="op">==</span> fast:</span>
+<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a>                p1 <span class="op">=</span> head</span>
+<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a>                p2 <span class="op">=</span> slow</span>
+<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a>                <span class="cf">while</span> p1 <span class="op">!=</span> p2:</span>
+<span id="cb68-13"><a href="#cb68-13" aria-hidden="true" tabindex="-1"></a>                    p1 <span class="op">=</span> p1.<span class="bu">next</span></span>
+<span id="cb68-14"><a href="#cb68-14" aria-hidden="true" tabindex="-1"></a>                    p2 <span class="op">=</span> p2.<span class="bu">next</span></span>
+<span id="cb68-15"><a href="#cb68-15" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> p1</span>
+<span id="cb68-16"><a href="#cb68-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-17"><a href="#cb68-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>时间复杂度O(n)，空间复杂度O(1)。</p>
+</section>
+<section id="合并两个有序链表" class="level2">
+<h2 class="anchored" data-anchor-id="合并两个有序链表">21.合并两个有序链表</h2>
+<p>给你两个已经排好序的链表 l1 和 l2，把它们合并成一个新的升序链表并返回。</p>
+<p>比如：</p>
+<ul>
+<li><code>l1: 1 -&gt; 2 -&gt; 4</code></li>
+<li><code>l2: 1 -&gt; 3 -&gt; 4</code></li>
+</ul>
+<p>合并后应该是：</p>
+<p><code>1 -&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 4</code></p>
+<p>注意：</p>
+<p>这里不是新建一堆值，而是把原来的节点重新串起来也可以。</p>
+<p><strong>题解</strong></p>
+<p>先抓两个链表的头节点，谁的值小，谁就成为新的链表的头节点，并且把对应的老链表的指针往后移一位，重复这个流程。如果哪条链表跑完了，那就把剩下那条链表都接到新链表的后面。</p>
+<p>有一些实现上的细节。</p>
+<p>我们准备一个“哑节点” <code>dummy</code>，再用一个指针 <code>tail</code> 表示当前已经合并好的链表的最后一个节点。</p>
+<p>然后每一步做三件事：</p>
+<ul>
+<li>比较 <code>l1.val</code> 和 <code>l2.val</code></li>
+<li>把较小的那个节点接到 <code>tail.next</code></li>
+<li><code>tail</code> 和被选中的链表指针都往后走</li>
+</ul>
+<p>最后把没走完的那条链表整个接上去。</p>
+<p><code>dummy</code>相当于在初始化尾指针，是一个辅助起点，避免做头节点的特殊处理。</p>
+<div id="94530ac7" class="cell" data-execution_count="61">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> mergeTwoLists(<span class="va">self</span>, l1: Optional[ListNode], l2: Optional[ListNode]) <span class="op">-&gt;</span> Optional[ListNode]:</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>        dummy <span class="op">=</span> ListNode()</span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>        tail <span class="op">=</span> dummy</span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> l1 <span class="kw">and</span> l2:</span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> l1.val <span class="op">&lt;=</span> l2.val:</span>
+<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a>                tail.<span class="bu">next</span> <span class="op">=</span> l1</span>
+<span id="cb69-9"><a href="#cb69-9" aria-hidden="true" tabindex="-1"></a>                l1 <span class="op">=</span> l1.<span class="bu">next</span></span>
+<span id="cb69-10"><a href="#cb69-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb69-11"><a href="#cb69-11" aria-hidden="true" tabindex="-1"></a>                tail.<span class="bu">next</span> <span class="op">=</span> l2</span>
+<span id="cb69-12"><a href="#cb69-12" aria-hidden="true" tabindex="-1"></a>                l2 <span class="op">=</span> l2.<span class="bu">next</span></span>
+<span id="cb69-13"><a href="#cb69-13" aria-hidden="true" tabindex="-1"></a>            tail <span class="op">=</span> tail.<span class="bu">next</span></span>
+<span id="cb69-14"><a href="#cb69-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-15"><a href="#cb69-15" aria-hidden="true" tabindex="-1"></a>        tail.<span class="bu">next</span> <span class="op">=</span> l1 <span class="cf">if</span> l1 <span class="cf">else</span> l2</span>
+<span id="cb69-16"><a href="#cb69-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> dummy.<span class="bu">next</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>时间复杂度为O(m+n)，空间复杂度为O(1)。</p>
+<p>再介绍一种递归解法。思路是谁小谁就做当前的头节点，再把它的next指向剩余合并以后的结果。</p>
+<p>比如当前<code>l1.val &lt;= l2.val</code>，那说明合并后的头节点一定是 <code>l1</code>。</p>
+<p>剩下的问题就变成：<code>l1.next</code> 和 <code>l2</code> 怎么合并？</p>
+<p>这正是一个规模更小的同类问题，所以可以递归。</p>
+<div id="12a0a8f1" class="cell" data-execution_count="62">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> mergeTwoLists(<span class="va">self</span>, l1: Optional[ListNode], l2: Optional[ListNode]) <span class="op">-&gt;</span> Optional[ListNode]:</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> l1:</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> l2</span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> l2:</span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> l1</span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> l1.val <span class="op">&lt;=</span> l2.val:</span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a>            l1.<span class="bu">next</span> <span class="op">=</span> <span class="va">self</span>.mergeTwoLists(l1.<span class="bu">next</span>, l2)</span>
+<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> l1</span>
+<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a>            l2.<span class="bu">next</span> <span class="op">=</span> <span class="va">self</span>.mergeTwoLists(l1, l2.<span class="bu">next</span>)</span>
+<span id="cb70-13"><a href="#cb70-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> l2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>仅供了解，毕竟空间复杂度由于递归栈来到了O(m+n)。</p>
+</section>
+<section id="两数相加" class="level2">
+<h2 class="anchored" data-anchor-id="两数相加">2.两数相加</h2>
+<p>给你两个非空链表 l1 和 l2，它们表示两个非负整数。</p>
+<p>但有两个特点：</p>
+<ol type="1">
+<li><p>数字是逆序存储</p>
+<p>比如：</p>
+<p>[2,4,3]</p>
+<p>表示的不是 243，而是：342</p>
+<p>因为个位在前，十位在后，百位再后。</p></li>
+<li><p>每个节点只存一位数字</p>
+<p>所以：</p>
+<p>2 -&gt; 4 -&gt; 3</p>
+<p>表示：</p>
+<p>个位是 2，十位是 4，百位是 3</p>
+<p>也就是 342</p></li>
+</ol>
+<p>题目要求你把两个数相加，并且仍然用这种逆序链表形式返回结果。</p>
+<p><strong>题解</strong></p>
+<p>字符串操作和数值转换肯定是可以做的，但多次反转反而麻烦。</p>
+<p>虽然数字的存储是逆序的，但刚好符合从低位开始加的运算习惯，并且进位操作可以自然地加到下一位上，倘若不是逆序而是顺序的，反而不方便遍历，进位还要回溯到上一个节点了。</p>
+<p>进位变量初始为0。逐节点遍历，判断<code>和+进位变量</code>是否大于9，如果是把<code>和-10+进位变量</code>赋给对应节点，并把进位变量设成1；如果不是则把<code>和+进位变量</code>赋给对应节点，并把进位变量设为0。如果走到了<code>None</code>的时候进位变量为1，那就要把最后一个节点的指向改为值为1的新的终止节点了。</p>
+<p>来看具体实现。</p>
+<div id="ae4112ce" class="cell" data-execution_count="63">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> addTwoNumbers(<span class="va">self</span>, l1: Optional[ListNode], l2: Optional[ListNode]) <span class="op">-&gt;</span> Optional[ListNode]:</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>        dummy <span class="op">=</span> ListNode()</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>        tail <span class="op">=</span> dummy</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>        carry <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> l1 <span class="kw">or</span> l2 <span class="kw">or</span> carry:</span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>            x <span class="op">=</span> l1.val <span class="cf">if</span> l1 <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> l2.val <span class="cf">if</span> l2 <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a>            total <span class="op">=</span> x <span class="op">+</span> y <span class="op">+</span> carry</span>
+<span id="cb71-12"><a href="#cb71-12" aria-hidden="true" tabindex="-1"></a>            carry <span class="op">=</span> total <span class="op">//</span> <span class="dv">10</span></span>
+<span id="cb71-13"><a href="#cb71-13" aria-hidden="true" tabindex="-1"></a>            digit <span class="op">=</span> total <span class="op">%</span> <span class="dv">10</span></span>
+<span id="cb71-14"><a href="#cb71-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-15"><a href="#cb71-15" aria-hidden="true" tabindex="-1"></a>            tail.<span class="bu">next</span> <span class="op">=</span> ListNode(digit)</span>
+<span id="cb71-16"><a href="#cb71-16" aria-hidden="true" tabindex="-1"></a>            tail <span class="op">=</span> tail.<span class="bu">next</span></span>
+<span id="cb71-17"><a href="#cb71-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-18"><a href="#cb71-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> l1:</span>
+<span id="cb71-19"><a href="#cb71-19" aria-hidden="true" tabindex="-1"></a>                l1 <span class="op">=</span> l1.<span class="bu">next</span></span>
+<span id="cb71-20"><a href="#cb71-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> l2:</span>
+<span id="cb71-21"><a href="#cb71-21" aria-hidden="true" tabindex="-1"></a>                l2 <span class="op">=</span> l2.<span class="bu">next</span></span>
+<span id="cb71-22"><a href="#cb71-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-23"><a href="#cb71-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> dummy.<span class="bu">next</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>用整除和取余替换了if逻辑。</p>
+<p><code>while l1 or l2 or carry:</code>的逻辑是两个链表都要遍历完，且进位变量也得算完。后一种情况可以整合进来。</p>
+<p>不要忘记dummy、tail技巧，以及</p>
+<div id="ef04d222" class="cell" data-execution_count="64">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>tail.<span class="bu">next</span> <span class="op">=</span> ListNode(digit)</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>tail <span class="op">=</span> tail.<span class="bu">next</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>这样的节点创建方式。</p>
+<p>时间复杂度和空间复杂度都是O(max(m, n))。因为结果还是新开了空间，在不额外说明的情况下还是要算复杂度的。</p>
+</section>
+<section id="删除链表的倒数第-n-个结点" class="level2">
+<h2 class="anchored" data-anchor-id="删除链表的倒数第-n-个结点">19.删除链表的倒数第 N 个结点</h2>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
